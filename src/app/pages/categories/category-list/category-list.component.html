@@ -6,8 +6,6 @@
 </nav>
 
 
-
-
 <div class="row mb-4">
     <div class="col-md">
         <h1 class="h2 border-left pl-2">
@@ -30,71 +28,19 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <!-- Categorias-->
+        <!-- Categorias-->
+        <tr *ngFor="let category of categories">
             <td>
-                <strong>Lazer</strong><br>
-                <small>Cinema, Parque, Praia, Jogos</small>
+                <strong>{{category.name}}</strong><br>
+                <small>{{category.description}}</small>
             </td>
             <!-- Botões-->
             <td>
-                <a [routerLink]="[1, 'edit']" class="btn btn-outline-info mr-1
+                <a [routerLink]="[category.id, 'edit']" class="btn btn-outline-info mr-1
                     btn-sm"> Editar <i class="fas fa-edit"></i></a>
-                <button type="button" (click)="alert('Excluir')" class="btn
+                <button type="button" (click)="deleteCategory(category)" class="btn
                     btn-outline-danger btn-sm">Delete<i class="fas fa-eraser"></i></button>
             </td>
         </tr>
-
-        <!-- Testando Visual da Tabela com mas Linhas-->
-        <tr>
-            <!-- Categorias-->
-            <td>
-                <strong>Lazer</strong><br>
-                <small>Cinema, Parque, Praia, Jogos</small>
-            </td>
-            <!-- Botões-->
-            <td>
-                <a [routerLink]="[1, 'edit']" class="btn btn-outline-info mr-1
-                    btn-sm"> Editar
-                    <i class="fas fa-edit"></i>
-                </a>
-
-                <button type="button" (click)="alert('Excluir')" class="btn
-                    btn-outline-danger btn-sm">Delete<i class="fas fa-eraser"></i></button>
-            </td>
-        </tr>
-        <tr>
-            <!-- Categorias-->
-            <td>
-                <strong>Lazer</strong><br>
-                <small>Cinema, Parque, Praia, Jogos</small>
-            </td>
-            <!-- Botões-->
-            <td>
-                <a [routerLink]="[1, 'edit']" class="btn btn-outline-info mr-1
-                    btn-sm"> Editar
-                    <i class="fas fa-edit"></i>
-                </a>
-                <button type="button" (click)="alert('Excluir')" class="btn
-                    btn-outline-danger btn-sm">Delete<i class="fas fa-eraser"></i></button>
-            </td>
-        </tr>
-        <tr>
-            <!-- Categorias-->
-            <td>
-                <strong>Lazer</strong><br>
-                <small>Cinema, Parque, Praia, Jogos</small>
-            </td>
-            <!-- Botões-->
-            <td>
-                <a [routerLink]="[1, 'edit']" class="btn btn-outline-info mr-1
-                    btn-sm"> Editar
-                    <i class="fas fa-edit"></i>
-                </a>
-                <button type="button" (click)="alert('Excluir')" class="btn
-                    btn-outline-danger btn-sm">Delete<i class="fas fa-eraser"></i></button>
-            </td>
-        </tr>
-
     </tbody>
 </table>
