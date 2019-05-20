@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif&display=swap');
+label, h2, h3, h4, h5, h6, p {
+    font-family: 'Lobster', cursive;   
+}
+
+li, h1 , button {
+    font-family: 'Bree Serif', serif;
+}
