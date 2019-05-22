@@ -2,7 +2,7 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
         <li class="breadcrumb-item"><a routerLink="/categories">Categorias</a></li>
-        <li class="breadcrumb-item active">Formulário de Categorias</li>
+        <li class="breadcrumb-item active">{{pageTitle}}</li>
     </ol>
 </nav>
 
@@ -10,7 +10,7 @@
 <div class="row mb-4">
     <div class="col-md">
         <h1 class="h2 border-left pl-2" style="color: rgba(233, 98, 49, 0.829)">
-            Formulário de Categoria - {{currentAction}}
+            {{pageTitle}}
         </h1>
     </div>
 
@@ -55,7 +55,7 @@
     </div>
 
     <button 
-        type="submit"
+        type="submit" [disabled] = "submittingForm || categoryForm.invalid"
         class="btn btn-primary btn-lg mt-2 float-right">
         <i class="fas fa-save"></i> Salvar
     </button>
