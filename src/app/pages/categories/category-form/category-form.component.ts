@@ -117,9 +117,9 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
 
     /* Forçando o recarregamento da Pagina, o skipLocationChange, evita que esta rota seja guardando no navegador.
     vou ate rota de categorias, e  em seguida volta para rota de categorias ja com o ID do Objeto , deforma rapida. */
-    this.router.navigateByUrl('categories', { skipLocationChange: true }).then(
-      () => this.router.navigate(['categories', obj.id, 'edit'])
-    )
+      this.router.navigateByUrl('categories', { skipLocationChange: true }).then(
+     () => this.router.navigate(['categories', obj.id, 'edit'])
+     )
   }
 
   /* Error*/
