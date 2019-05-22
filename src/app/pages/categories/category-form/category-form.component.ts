@@ -100,6 +100,12 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
 
   /* Update*/
   private update() {
+    const category: Category = Object.assign(new Category(), this.categoryForm.value); // atribuindo os Valores do Formulario a cetegoria
+
+    this.categoryService.update(category).subscribe(
+      category => this.actionsForSuccess(category),
+      error => this.actionsForError(error)
+    )
 
   }
 
@@ -113,7 +119,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
   }
 
   private actionsForSuccess(obj: Category): void {
-    toasrt.success("Solicitação Rpocessada com Sucesso!");
+    toasrt.success("Solicitação Processada com Sucesso!");
 
     /* Forçando o recarregamento da Pagina, o skipLocationChange, evita que esta rota seja guardando no navegador.
     vou ate rota de categorias, e  em seguida volta para rota de categorias ja com o ID do Objeto , deforma rapida. */
