@@ -39,7 +39,9 @@
                     <div class="text-danger"
                         *ngIf="categoryForm.get('name').invalid &&
                         categoryForm.get('name').touched">
-                        <div *ngIf="categoryForm.get('name').errors['required']">Campo Obrigatório.</div> 
+                        <div
+                            *ngIf="categoryForm.get('name').errors['required']">Campo
+                            Obrigatório.</div>
                     </div>
                 </div>
 
@@ -54,8 +56,16 @@
 
     </div>
 
-    <button 
-        type="submit" [disabled] = "submittingForm || categoryForm.invalid"
+    <!-- ERROR DO SERVIDOR-->
+    <div class="alert alert-danger mt-4" *ngIf="serverErrorMessages">
+        <strong>Erro no Servidor</strong>
+        <ul>
+            <li *ngFor="let error of serverErrorMessages">{{error}}</li>
+        </ul>
+    </div>
+
+    <button
+        type="submit" [disabled]="submittingForm || categoryForm.invalid"
         class="btn btn-primary btn-lg mt-2 float-right">
         <i class="fas fa-save"></i> Salvar
     </button>
