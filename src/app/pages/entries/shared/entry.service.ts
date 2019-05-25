@@ -37,7 +37,7 @@ export class EntryService {
     )
   }
 
-  /* Update -  PUT */
+  /* Update  -  PUT */
   public update(entry: Entry): Observable<Entry> {
     const url = `${this.apiPath}/${entry.id}`;
     return this.http.put(url, entry).pipe(
@@ -67,16 +67,24 @@ export class EntryService {
 
 
   //PRIVATE METHODS
- 
+
   private jsonDataToEntries(jsonData: any[]): Entry[] {
+    // console.log(jsonData[0] as Entry)
+    // console.log(Object.assign(new Entry(), jsonData[0]))
+
     const entries: Entry[] = [];
-    jsonData.forEach(element => entries.push(element as Entry));
+
+    jsonData.forEach(element => {
+      const obj =  Object.assign(new Entry(), element);
+     entries.push(obj);
+    });
+
     return entries;
   }
 
   /* jsonDataToEntry */
   private jsonDataToEntry(jsonData: any): Entry {
-    return jsonData as Entry;
+    return Object.assign(new Entry(), jsonData);
   }
   /* handleError -  */
   private handleError(error: any): Observable<any> {

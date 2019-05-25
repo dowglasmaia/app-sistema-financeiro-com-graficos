@@ -3,7 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   /* Rota para o modulo de categorias*/
-  {path: 'categories', loadChildren: './pages/categories/categories.module#CategoriesModule'}
+  {path: 'categories', loadChildren: './pages/categories/categories.module#CategoriesModule'},
+
+   /* Rota para o modulo de lançamentos*/
+  {path: 'entries', loadChildren: './pages/entries/entries.module#EntriesModule'}
 ];
 
 @NgModule({

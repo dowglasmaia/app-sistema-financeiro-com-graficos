@@ -5,6 +5,7 @@ import { Category } from './category.model';
 
 import { map, catchError, flatMap } from 'rxjs/operators';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { Entry } from './../../entries/shared/entry.model';
 
 
 
@@ -70,7 +71,7 @@ export class CategoryService {
   /* o jsonDataToCategories - Seria o mesmo que fazer:
     map( jsonData => this.jsonDataToCategory(jsonData) )
   */
-  private jsonDataToCategories(jsonData: any[]): Category[] {
+  private jsonDataToCategories(jsonData: any[]): Category[] {   
     const categories: Category[] = [];
     jsonData.forEach(element => categories.push(element as Category));
     return categories;
