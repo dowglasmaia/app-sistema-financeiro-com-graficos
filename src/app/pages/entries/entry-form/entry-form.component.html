@@ -1,0 +1,67 @@
+<nav class="mb-5">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item"><a routerLink="/entries">Lançamentos</a></li>
+        <li class="breadcrumb-item active">{{pageTitle}}</li>
+    </ol>
+</nav>
+
+
+<div class="row mb-4">
+    <div class="col-md-9">
+        <h1 class="h2 border-left pl-2" style="color: rgba(233, 98, 49, 0.829)">
+            {{pageTitle}}
+        </h1>
+    </div>
+
+    <div class="col-md-3">
+        <a routerLink="/entries" class="btn btn-ligth float-right">
+            <i class="fas fa-angle-double-left"></i>
+            <label> Voltar</label>
+        </a>
+    </div>
+</div>
+
+<!-- FORMULARIO -->
+<form [formGroup]="entryForm" (ngSubmit)="submitForm()">
+    <div class="card">
+        <div class="card-header">
+            <label> Informações sobre o Lançamento</label>
+        </div>
+
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="name">Nome</label>
+                    <input type="text" class="form-control" id="name" formControlName="name">
+
+                    <div class="text-danger" *ngIf="entryForm.get('name').invalid &&
+                         entryForm.get('name').touched">
+                        <div *ngIf="entryForm.get('name').errors['required']">Campo Obrigatório.
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group col-md-8">
+                    <label for="description">Descrição</label>
+                    <input type="text" class="form-control" id="description" formControlName="description">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ERROR DO SERVIDOR-->
+    <div class="alert alert-danger mt-4" *ngIf="serverErrorMessages">
+        <strong>Erro no Servidor</strong>
+        <ul>
+            <li *ngFor="let error of serverErrorMessages">{{error}}</li>
+        </ul>
+    </div>
+
+    <button type="submit" [disabled]="submittingForm || entryForm.invalid" class="btn btn-primary btn-lg mt-2 float-right">
+        <i class="fas fa-save"></i> Salvar
+    </button>
+
+</form>

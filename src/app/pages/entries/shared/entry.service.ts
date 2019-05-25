@@ -56,7 +56,7 @@ export class EntryService {
   }
 
   /* Delete*/
-  public delete(id: number): Observable<any> {
+  public delete(id: number): Observable<{}> {
     const url = `${this.apiPath}/${id}`;
     return this.http.delete(url).pipe(
       catchError(this.handleError),
