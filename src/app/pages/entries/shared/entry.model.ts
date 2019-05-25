@@ -15,11 +15,13 @@ export class Entry {
 
     ) { }
 
+    //Tipo de Despesas. para setar os valores dinamicamente no Select do formulario
     static types = {
         expense: 'Despesa',
         renevue: 'Receita',
     }
 
+     // Metodo, que passa os valores, pago ou pendente.
     get paidText() : string {
         return this.paid ? 'Pago' : 'Pendente';
     }

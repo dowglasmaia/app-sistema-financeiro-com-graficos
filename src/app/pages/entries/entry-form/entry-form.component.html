@@ -30,24 +30,124 @@
         </div>
 
         <div class="card-body">
+
             <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="name">Nome</label>
+
+                <!--Type-->
+                <div class="form-group col-2">
+                    <label for="type">Tipo</label>
+                    <select class="form-control" formControlName="type" name="type" id="type">   
+                        <!-- fazendo um Laço nas Opções e Definindo os Valores dinamicamente-->                   
+                        <option *ngFor="let option of typeOptions" [value]="option.value">{{option.text}}</option>                     
+                    </select>
+                     <!-- Msg de Validação-->
+                    <div class="text-danger" *ngIf="entryForm.get('type').invalid &&
+                         entryForm.get('type').touched">
+                        <div *ngIf="entryForm.get('type').errors['required']">
+                            Campo Obrigatório.
+                        </div>
+                    </div>
+                </div>
+
+                <!--Name-->
+                <div class="form-group col-md-5">
+                    <label for="name">Lançamento</label>
                     <input type="text" class="form-control" id="name" formControlName="name">
 
                     <div class="text-danger" *ngIf="entryForm.get('name').invalid &&
-                         entryForm.get('name').touched">
+                                 entryForm.get('name').touched">
                         <div *ngIf="entryForm.get('name').errors['required']">Campo Obrigatório.
                         </div>
                     </div>
                 </div>
 
+                <!--Valor-->
+                <div class="form-group col-md-3">
+                    <label for="valor">Valor</label>
+                    <div class="input-group">
+                        <!-- Colocando o Simbulo da Moeda R$, no Campo-->
+                        <div class="input-prepend">
+                            <div class="input-group-text"> R$ </div>
+                        </div>
+                        <!-- imask , define a mascara do campo-->
+                        <input [imask]="imaskConfig" type="text" class="form-control text-right" id="valor"
+                            formControlName="amount">
+                    </div>
 
+                    <div class="text-danger" *ngIf="entryForm.get('amount').invalid &&
+                                 entryForm.get('amount').touched">
+                        <div *ngIf="entryForm.get('amount').errors['required']">Campo Obrigatório.
+                        </div>
+                    </div>
+                </div>
+
+                <!--Data-->
+                <div class="form-group col-md-2">
+                    <label for="date">Data</label>
+
+                    <input type="date" name="date" id="date" formControlName="date" class="form-control">
+                    <!--
+                    <p-calendar id="date" formControlName="date" inputStyleClass="form-control" dateFormat="dd/mm/yy"
+                        dataType="string" [locale]="ptBR" [showButtonBar]=true>
+                    </p-calendar>
+        -->
+                    <div class="text-danger" *ngIf="entryForm.get('date').invalid &&
+                                     entryForm.get('date').touched">
+                        <div *ngIf="entryForm.get('date').errors['required']">Campo Data é Obrigatório.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <!--Pago-->
+                <div class="form-group col-md-2">
+                    <label for="paid">Pago</label>
+                    <!-- Conf o active dinamicamente com o capo que estiver marcado - [class.active]-->
+                    <div class="btn-group">
+                        <label [class.active]="entryForm.get('paid').value == true"
+                            (click)="entryForm.get('paid').setValue(true)" class="btn btn-outline-info">
+                            Pago
+                        </label>
+                        <label [class.active]="entryForm.get('paid').value == false"
+                            (click)="entryForm.get('paid').setValue(false)" class="btn btn-outline-info">
+                            Pendente
+                        </label>
+                    </div>
+
+                    <div class="text-danger" *ngIf="entryForm.get('paid').invalid &&
+                                     entryForm.get('paid').touched">
+                        <div *ngIf="entryForm.get('paid').errors['required']">Campo Obrigatório.
+                        </div>
+                    </div>
+                </div>
+
+                <!--Descrição-->
                 <div class="form-group col-md-8">
                     <label for="description">Descrição</label>
                     <input type="text" class="form-control" id="description" formControlName="description">
                 </div>
+
+                <!--Categoria-->
+                <div class="form-group col-2">
+                    <label for="categoriId">Categoria</label>
+                    <select class="form-control" formControlName="categoriId"  name="categoriId"
+                        id="categoriId">
+                        <option *ngFor="let obj of categories" [value]="obj.id">{{obj.name}}</option>
+                       
+                    </select>
+                    
+                    <div class="text-danger" *ngIf="entryForm.get('categoriId').invalid &&
+                                 entryForm.get('categoriId').touched">
+                        <div *ngIf="entryForm.get('categoriId').errors['required']">
+                            Informe uma Categoria
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
+
         </div>
 
     </div>
@@ -60,8 +160,17 @@
         </ul>
     </div>
 
-    <button type="submit" [disabled]="submittingForm || entryForm.invalid" class="btn btn-primary btn-lg mt-2 float-right">
+    <button type="submit" [disabled]="submittingForm || entryForm.invalid"
+        class="btn btn-primary btn-lg mt-2 float-right">
         <i class="fas fa-save"></i> Salvar
     </button>
 
 </form>
+
+<!-- testando a mudança dos valores do formulario-->
+<!---->
+    <pre>
+    {{entryForm.value | json}}
+</pre>
+
+
