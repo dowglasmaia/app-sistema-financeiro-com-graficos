@@ -146,6 +146,7 @@ export class entryFormComponent implements OnInit, AfterContentChecked {
 
     this.entryService.update(entry).subscribe(
       entry => this.actionsForSuccess(entry),
+     // toasrt.success("Lançamento atualizado com Sucesso!"),
       error => this.actionsForError(error)
     )
 

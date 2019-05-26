@@ -42,7 +42,7 @@ export class CategoryService {
     const url = `${this.apiPath}/${category.id}`;
     return this.http.put(url, category).pipe(
       catchError(this.handleError),
-      map(this.jsonDataToCategory)
+      map(()=> category)
     )
   }
 
@@ -51,7 +51,7 @@ export class CategoryService {
   public create(category: Category): Observable<Category> {
     return this.http.post(this.apiPath, category).pipe(
       catchError(this.handleError),
-      map(() => category) // o in-memory não retorna denhum dado quando atualiza , por isso não utilizei o - map(this.jsonDataToCategory), em caso de uma API Real utilizo normalmente.
+      map(this.jsonDataToCategory) // o in-memory não retorna denhum dado quando atualiza , por isso não utilizei o - map(this.jsonDataToCategory), em caso de uma API Real utilizo normalmente.
     )
   }
 

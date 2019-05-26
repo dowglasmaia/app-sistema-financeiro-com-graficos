@@ -6,6 +6,7 @@ import { Observable, throwError } from 'rxjs';
 import { map, catchError, flatMap } from 'rxjs/operators';
 
 import { Entry } from './entry.model';
+import { CategoryService } from '../../categories/shared/category.service';
 
 
 
@@ -17,7 +18,8 @@ export class EntryService {
   private apiPath: string = "api/entries";
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private categoryServices: CategoryService
   ) { }
 
   /* Retorna Todas */
@@ -42,18 +44,26 @@ export class EntryService {
     const url = `${this.apiPath}/${entry.id}`;
     return this.http.put(url, entry).pipe(
       catchError(this.handleError),
-      map(this.jsonDataToEntry)
+      map(() => entry)
     )
   }
 
 
   /* POST - SAVE*/
   public create(entry: Entry): Observable<Entry> {
+    /* Adapitando para o Imemory, em caso de API externa não precisa
+    return this.categoryServices.getById(entry.categoryId).pipe(
+      flatMap(category => {
+        entry.category = category;*/
+
+    // com API exerna Usar só este.
     return this.http.post(this.apiPath, entry).pipe(
       catchError(this.handleError),
-      map(() => entry) // o in-memory não retorna denhum dado quando atualiza , por isso não utilizei o - map(this.jsonDataToEntry), em caso de uma API Real utilizo normalmente.
-    )
+      map(this.jsonDataToEntry) // o in-memory não retorna denhum dado quando atualiza , por isso não utilizei o - map(this.jsonDataToEntry), em caso de uma API Real utilizo normalmente.
+    );
   }
+
+
 
   /* Delete*/
   public delete(id: number): Observable<{}> {
@@ -75,8 +85,8 @@ export class EntryService {
     const entries: Entry[] = [];
 
     jsonData.forEach(element => {
-      const obj =  Object.assign(new Entry(), element);
-     entries.push(obj);
+      const obj = Object.assign(new Entry(), element);
+      entries.push(obj);
     });
 
     return entries;
