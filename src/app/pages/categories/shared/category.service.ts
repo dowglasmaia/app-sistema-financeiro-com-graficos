@@ -5,6 +5,7 @@ import { Category } from './category.model';
 
 import { map, catchError, flatMap } from 'rxjs/operators';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { Entry } from './../../entries/shared/entry.model';
 
 
 
@@ -41,7 +42,7 @@ export class CategoryService {
     const url = `${this.apiPath}/${category.id}`;
     return this.http.put(url, category).pipe(
       catchError(this.handleError),
-      map(this.jsonDataToCategory)
+      map(()=> category)
     )
   }
 
@@ -50,7 +51,7 @@ export class CategoryService {
   public create(category: Category): Observable<Category> {
     return this.http.post(this.apiPath, category).pipe(
       catchError(this.handleError),
-      map(() => category) // o in-memory não retorna denhum dado quando atualiza , por isso não utilizei o - map(this.jsonDataToCategory), em caso de uma API Real utilizo normalmente.
+      map(this.jsonDataToCategory) // o in-memory não retorna denhum dado quando atualiza , por isso não utilizei o - map(this.jsonDataToCategory), em caso de uma API Real utilizo normalmente.
     )
   }
 
@@ -70,7 +71,7 @@ export class CategoryService {
   /* o jsonDataToCategories - Seria o mesmo que fazer:
     map( jsonData => this.jsonDataToCategory(jsonData) )
   */
-  private jsonDataToCategories(jsonData: any[]): Category[] {
+  private jsonDataToCategories(jsonData: any[]): Category[] {   
     const categories: Category[] = [];
     jsonData.forEach(element => categories.push(element as Category));
     return categories;

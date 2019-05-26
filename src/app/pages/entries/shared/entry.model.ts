@@ -19,7 +19,10 @@ export class Entry {
     static types = {
         expense: 'Despesa',
         revenue: 'Receita',
+<<<<<<< HEAD
         ///
+=======
+>>>>>>> adding-entries-modules
     }
 
      // Metodo, que passa os valores, pago ou pendente.

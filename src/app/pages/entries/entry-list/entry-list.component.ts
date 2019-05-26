@@ -18,7 +18,11 @@ export class EntryListComponent implements OnInit {
 
     this.entryServices.getAll().subscribe(
       obj => {
+<<<<<<< HEAD
         this.entries = obj.sort((a,b) => b.id - a.id);  //sort((a,b) => b.id - a.id)  Ordenação comprando A e B, colocando o ultimo adicionado na como prioridade.
+=======
+        this.entries = obj.sort((a, b) => b.id - a.id);  //sort((a,b) => b.id - a.id)  Ordenação comprando A e B, colocando o ultimo adicionado na lista como prioridade.
+>>>>>>> adding-entries-modules
       }, error => {
         alert('Erro ao carregar a lista');
       })
