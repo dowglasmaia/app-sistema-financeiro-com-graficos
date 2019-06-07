@@ -1,19 +1,18 @@
-import { Injectable } from '@angular/core';
+import { BaseResourceModel } from '../models/base-resource.model';
 
-import { Category } from './category.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class CategoryService {
 
-  private apiPath: string = "api/categories";
+/**@author Dowglas Maia 
+ * @default Class Gerenerica de Serviços
+ */
 
-  constructor(
-    private http: HttpClient
-  ) { }
 
-  /* Retorna Todas as Categorias*/
+export abstract class BaseResourceService<T extends BaseResourceModel>{
+
+     /* Retorna Todas as Categorias*/
   public getAll(): Observable<Category[]> {
     return this.http.get(this.apiPath).pipe(
       catchError(this.handleError),
@@ -57,27 +56,5 @@ export class CategoryService {
     )
   }
 
-
-
-  //PRIVATE METHODS
-
-  /* o jsonDataToCategories - Seria o mesmo que fazer:
-    map( jsonData => this.jsonDataToCategory(jsonData) )
-  */
-  private jsonDataToCategories(jsonData: any[]): Category[] {   
-    const categories: Category[] = [];
-    jsonData.forEach(element => categories.push(element as Category));
-    return categories;
-  }
-
-  /* jsonDataToCategory */
-  private jsonDataToCategory(jsonData: any): Category {
-    return jsonData as Category;
-  }
-  /* handleError -  */
-  private handleError(error: any): Observable<any> {
-    console.log("ERRO NA REQUISIÇÃO => ", error);
-    return throwError(error);
-  }
 
 }
