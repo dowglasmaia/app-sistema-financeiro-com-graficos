@@ -1,6 +1,6 @@
 import { BaseResourceModel } from '../models/base-resource.model';
 
-import { Inject } from '@angular/core';
+import { Injector } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
@@ -16,7 +16,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
 
     constructor (       
         protected apiPath: string,
-        protected injector: Inject        
+        protected injector: Injector,       
     ){ 
       //injetando o HttpClient
       this.http = injector.get(HttpClient);  
