@@ -10,4 +10,10 @@ export class Category extends BaseResourceModel {
         super(); // sempre que se extent uma class teve declarar o super();
     }
 
+      /* Instanciando um jsonData de Category*/
+      static fromJson(jsonData: any): Category {
+        return Object.assign(new Category(), jsonData);
+    }
+
+
 }

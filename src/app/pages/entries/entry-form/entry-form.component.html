@@ -102,13 +102,14 @@
             <div class="form-row">
                 <!--Pago-->
                 <div class="form-group col-md-2">
-                    <label for="paid">Pago</label>
+                    <label for="paid">Pago</label><br/>
                     <!-- Conf o active dinamicamente com o capo que estiver marcado - [class.active]-->
                     <div class="btn-group">
                         <label [class.active]="entryForm.get('paid').value == true"
                             (click)="entryForm.get('paid').setValue(true)" class="btn btn-outline-info">
                             Pago
                         </label>
+                        
                         <label [class.active]="entryForm.get('paid').value == false"
                             (click)="entryForm.get('paid').setValue(false)" class="btn btn-outline-info">
                             Pendente

@@ -26,8 +26,8 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
     /* Retorna Todas as Categorias*/
     public getAll(): Observable<T[]> {
         return this.http.get(this.apiPath).pipe(
-            catchError(this.handleError),
-            map(this.jsonDataToRecources)
+            map(this.jsonDataToRecources.bind(this)), // passando para a função qual this, deve ser levando dentro da mesma.
+            catchError(this.handleError)
         )
     }
 
@@ -35,8 +35,8 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
     public getById(id: number): Observable<T> {
         const url = `${this.apiPath}/${id}`;
         return this.http.get(url).pipe(
+            map(this.jsonDataToRecource.bind(this)),
             catchError(this.handleError),
-            map(this.jsonDataToRecource)
         )
     }
 
@@ -44,35 +44,34 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
     public update(recource: T): Observable<T> {
         const url = `${this.apiPath}/${recource.id}`;
         return this.http.put(url, recource).pipe(
-            catchError(this.handleError),
-            map(() => recource)
+            map(() => recource),
+            catchError(this.handleError)
         )
     }
-
 
     /* POST - SAVE*/
     public create(recource: T): Observable<T> {
         return this.http.post(this.apiPath, recource).pipe(
+            map(this.jsonDataToRecource.bind(this)), // o in-memory não retorna denhum dado quando atualiza , por isso não utilizei o - map(this.jsonDataToRecource), em caso de uma API Real utilizo normalmente.
             catchError(this.handleError),
-            map(this.jsonDataToRecource) // o in-memory não retorna denhum dado quando atualiza , por isso não utilizei o - map(this.jsonDataToRecource), em caso de uma API Real utilizo normalmente.
         )
+        
     }
 
     /* Delete*/
     public delete(id: number): Observable<any> {
         const url = `${this.apiPath}/${id}`;
         return this.http.delete(url).pipe(
+            map(() => null), // no Delete retono null 
             catchError(this.handleError),
-            map(() => null) // no Delete retono null 
         )
     }
-
 
     //PROTECTED METHODS
     protected jsonDataToRecources(jsonData: any[]): T[] {
         const recource: T[] = [];
         jsonData.forEach(
-            element => recource.push( this.jsonDataToRecorceFn(element) )
+            element => recource.push(this.jsonDataToRecorceFn(element))
         );
         return recource;
     }
@@ -86,6 +85,4 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
         console.log("ERRO NA REQUISIÇÃO => ", error);
         return throwError(error);
     }
-
-
 }
