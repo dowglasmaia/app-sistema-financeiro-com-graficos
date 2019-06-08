@@ -24,6 +24,11 @@ export class Entry extends BaseResourceModel {
         revenue: 'Receita',
     }
 
+    /* Instanciando um jsonData de Entry*/
+    static fromJson(jsonData: any): Entry {
+        return Object.assign(new Entry(), jsonData);
+    }
+
     // Metodo, que passa os valores, pago ou pendente.
     get paidText(): string {
         return this.paid ? 'Pago' : 'Pendente';

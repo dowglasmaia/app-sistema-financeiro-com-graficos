@@ -72,7 +72,7 @@ export class entryFormComponent implements OnInit, AfterContentChecked {
   private getGategories() {
     this.categoriesService.getAll().subscribe(
       obj => this.categories = obj
-   );
+    );
   }
 
   /* Carrega logo todos os componentes da pagina serem carregados*/
@@ -142,11 +142,10 @@ export class entryFormComponent implements OnInit, AfterContentChecked {
 
   /* Update*/
   private update() {
-    const entry: Entry = Object.assign(new Entry(), this.entryForm.value); // atribuindo os Valores do Formulario a cetegoria
-
+    const entry: Entry = Entry.fromJson(this.entryForm.value);
     this.entryService.update(entry).subscribe(
       entry => this.actionsForSuccess(entry),
-     // toasrt.success("Lançamento atualizado com Sucesso!"),
+      // toasrt.success("Lançamento atualizado com Sucesso!"),
       error => this.actionsForError(error)
     )
 
@@ -154,7 +153,7 @@ export class entryFormComponent implements OnInit, AfterContentChecked {
 
   /* Salvar*/
   private createEntry() {
-    const entry: Entry = Object.assign(new Entry(), this.entryForm.value); // atribuindo os Valores do Formulario a cetegoria
+    const entry: Entry = Entry.fromJson(this.entryForm.value);
 
     this.entryService.create(entry).subscribe(
       entry => this.actionsForSuccess(entry),

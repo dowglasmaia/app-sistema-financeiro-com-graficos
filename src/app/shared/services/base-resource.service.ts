@@ -14,12 +14,13 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
 
     protected http: HttpClient;
 
-    constructor (       
+    constructor(
         protected apiPath: string,
-        protected injector: Injector,       
-    ){ 
-      //injetando o HttpClient
-      this.http = injector.get(HttpClient);  
+        protected injector: Injector,
+        protected jsonDataToRecorceFn: (jsonData) => T
+    ) {
+        //injetando o HttpClient
+        this.http = injector.get(HttpClient);
     }
 
     /* Retorna Todas as Categorias*/
@@ -70,13 +71,15 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
     //PROTECTED METHODS
     protected jsonDataToRecources(jsonData: any[]): T[] {
         const recource: T[] = [];
-        jsonData.forEach(element => recource.push(element as T));
+        jsonData.forEach(
+            element => recource.push( this.jsonDataToRecorceFn(element) )
+        );
         return recource;
     }
 
     /* jsonDataTo<T> */
     protected jsonDataToRecource(jsonData: any): T {
-        return jsonData as T;
+        return this.jsonDataToRecorceFn(jsonData);
     }
     /* handleError -  */
     protected handleError(error: any): Observable<any> {
