@@ -23,7 +23,7 @@
 </div>
 
 <!-- FORMULARIO -->
-<form [formGroup]="categoryForm" (ngSubmit)="submitForm()">
+<form [formGroup]="resourceForm" (ngSubmit)="submitForm()">
     <div class="card">
         <div class="card-header">
             <label> Informações sobre a categoria</label>
@@ -37,10 +37,10 @@
                         formControlName="name">
 
                     <div class="text-danger"
-                        *ngIf="categoryForm.get('name').invalid &&
-                        categoryForm.get('name').touched">
+                        *ngIf="resourceForm.get('name').invalid &&
+                        resourceForm.get('name').touched">
                         <div
-                            *ngIf="categoryForm.get('name').errors['required']">Campo
+                            *ngIf="resourceForm.get('name').errors['required']">Campo
                             Obrigatório.</div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
     </div>
 
     <button
-        type="submit" [disabled]="submittingForm || categoryForm.invalid"
+        type="submit" [disabled]="submittingForm || resourceForm.invalid"
         class="btn btn-primary btn-lg mt-2 float-right">
         <i class="fas fa-save"></i> Salvar
     </button>
