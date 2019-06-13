@@ -23,7 +23,7 @@
 </div>
 
 <!-- FORMULARIO -->
-<form [formGroup]="entryForm" (ngSubmit)="submitForm()">
+<form [formGroup]="resourceForm" (ngSubmit)="submitForm()">
     <div class="card">
         <div class="card-header">
             <label> Informações sobre o Lançamento</label>
@@ -41,9 +41,9 @@
                         <option *ngFor="let option of typeOptions" [value]="option.value">{{option.text}}</option>                     
                     </select>
                      <!-- Msg de Validação-->
-                    <div class="text-danger" *ngIf="entryForm.get('type').invalid &&
-                         entryForm.get('type').touched">
-                        <div *ngIf="entryForm.get('type').errors['required']">
+                    <div class="text-danger" *ngIf="resourceForm.get('type').invalid &&
+                         resourceForm.get('type').touched">
+                        <div *ngIf="resourceForm.get('type').errors['required']">
                             Campo Obrigatório.
                         </div>
                     </div>
@@ -54,9 +54,9 @@
                     <label for="name">Lançamento</label>
                     <input type="text" class="form-control" id="name" formControlName="name">
 
-                    <div class="text-danger" *ngIf="entryForm.get('name').invalid &&
-                                 entryForm.get('name').touched">
-                        <div *ngIf="entryForm.get('name').errors['required']">Campo Obrigatório.
+                    <div class="text-danger" *ngIf="resourceForm.get('name').invalid &&
+                                 resourceForm.get('name').touched">
+                        <div *ngIf="resourceForm.get('name').errors['required']">Campo Obrigatório.
                         </div>
                     </div>
                 </div>
@@ -74,9 +74,9 @@
                             formControlName="amount">
                     </div>
 
-                    <div class="text-danger" *ngIf="entryForm.get('amount').invalid &&
-                                 entryForm.get('amount').touched">
-                        <div *ngIf="entryForm.get('amount').errors['required']">Campo Obrigatório.
+                    <div class="text-danger" *ngIf="resourceForm.get('amount').invalid &&
+                                 resourceForm.get('amount').touched">
+                        <div *ngIf="resourceForm.get('amount').errors['required']">Campo Obrigatório.
                         </div>
                     </div>
                 </div>
@@ -91,9 +91,9 @@
                         dataType="string" [locale]="ptBR" [showButtonBar]=true  >
                     </p-calendar>
      
-                    <div class="text-danger" *ngIf="entryForm.get('date').invalid &&
-                                     entryForm.get('date').touched">
-                        <div *ngIf="entryForm.get('date').errors['required']">Campo Data é Obrigatório.
+                    <div class="text-danger" *ngIf="resourceForm.get('date').invalid &&
+                                     resourceForm.get('date').touched">
+                        <div *ngIf="resourceForm.get('date').errors['required']">Campo Data é Obrigatório.
                         </div>
                     </div>
                 </div>
@@ -105,20 +105,20 @@
                     <label for="paid">Pago</label><br/>
                     <!-- Conf o active dinamicamente com o capo que estiver marcado - [class.active]-->
                     <div class="btn-group">
-                        <label [class.active]="entryForm.get('paid').value == true"
-                            (click)="entryForm.get('paid').setValue(true)" class="btn btn-outline-info">
+                        <label [class.active]="resourceForm.get('paid').value == true"
+                            (click)="resourceForm.get('paid').setValue(true)" class="btn btn-outline-info">
                             Pago
                         </label>
                         
-                        <label [class.active]="entryForm.get('paid').value == false"
-                            (click)="entryForm.get('paid').setValue(false)" class="btn btn-outline-info">
+                        <label [class.active]="resourceForm.get('paid').value == false"
+                            (click)="resourceForm.get('paid').setValue(false)" class="btn btn-outline-info">
                             Pendente
                         </label>
                     </div>
 
-                    <div class="text-danger" *ngIf="entryForm.get('paid').invalid &&
-                                     entryForm.get('paid').touched">
-                        <div *ngIf="entryForm.get('paid').errors['required']">Campo Obrigatório.
+                    <div class="text-danger" *ngIf="resourceForm.get('paid').invalid &&
+                                     resourceForm.get('paid').touched">
+                        <div *ngIf="resourceForm.get('paid').errors['required']">Campo Obrigatório.
                         </div>
                     </div>
                 </div>
@@ -138,9 +138,9 @@
                        
                     </select>
                     
-                    <div class="text-danger" *ngIf="entryForm.get('categoriId').invalid &&
-                                 entryForm.get('categoriId').touched">
-                        <div *ngIf="entryForm.get('categoriId').errors['required']">
+                    <div class="text-danger" *ngIf="resourceForm.get('categoriId').invalid &&
+                                 resourceForm.get('categoriId').touched">
+                        <div *ngIf="resourceForm.get('categoriId').errors['required']">
                             Informe uma Categoria
                         </div>
                     </div>
@@ -161,7 +161,7 @@
         </ul>
     </div>
 
-    <button type="submit" [disabled]="submittingForm || entryForm.invalid"
+    <button type="submit" [disabled]="submittingForm || resourceForm.invalid"
         class="btn btn-primary btn-lg mt-2 float-right">
         <i class="fas fa-save"></i> Salvar
     </button>
