@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment.prod';
 
 /**@author Dowglas Maia 
  * @default Class Gerenerica de Serviços
@@ -15,7 +16,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
     protected http: HttpClient;
 
     constructor(
-        protected apiPath: string,
+        protected apiPath = environment.url_api,
         protected injector: Injector,
         protected jsonDataToRecorceFn: (jsonData) => T
     ) {
@@ -44,7 +45,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
     public update(recource: T): Observable<T> {
         const url = `${this.apiPath}/${recource.id}`;
         return this.http.put(url, recource).pipe(
-            map(() => recource),
+            map(this.jsonDataToRecource.bind(this)),  // o in-memory não retorna denhum dado quando atualiza , por isso não utilizei o - map(this.jsonDataToRecource), em caso de uma API Real utilizo normalmente.
             catchError(this.handleError)
         )
     }
@@ -52,7 +53,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
     /* POST - SAVE*/
     public create(recource: T): Observable<T> {
         return this.http.post(this.apiPath, recource).pipe(
-            map(this.jsonDataToRecource.bind(this)), // o in-memory não retorna denhum dado quando atualiza , por isso não utilizei o - map(this.jsonDataToRecource), em caso de uma API Real utilizo normalmente.
+            map(this.jsonDataToRecource.bind(this)),
             catchError(this.handleError),
         )
         

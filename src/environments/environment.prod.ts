@@ -1,3 +1,14 @@
+import { HttpHeaders } from '@angular/common/http';
+
 export const environment = {
-  production: true
+  production: true,
+
+  /* url do servidor*/
+  url_api: 'http://localhost:8080/',
+
+
+  /* headers - Definindo o Tipo de Conteudo que é Passo no corpo da requisição*/
+  httpOptions: {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  }
 };

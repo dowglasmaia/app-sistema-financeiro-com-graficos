@@ -12,7 +12,7 @@ export class CategoryService extends BaseResourceService<Category> {
     protected injector: Injector) {
 
     // o injector, injeta todas as depencencias declaradas no mesmo, na Class base de Serviço. - neste caso o httpClient
-    super("api/categories", injector,Category.fromJson);
+    super("categories", injector,Category.fromJson);
   }
 
 }

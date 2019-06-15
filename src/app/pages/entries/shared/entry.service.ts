@@ -11,7 +11,7 @@ export class EntryService extends BaseResourceService<Entry>{
     protected injector: Injector,
     private categoryServices: CategoryService
   ) {
-    super("api/entries", injector , Entry.fromJson);
+    super("entries", injector , Entry.fromJson);
   }
 
 }

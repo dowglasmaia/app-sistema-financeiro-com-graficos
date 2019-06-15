@@ -18,7 +18,7 @@ import { InMemoryDatabase } from './../in-memory-database';
     BrowserAnimationsModule,
     CommonModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase) // Confg para usar a API REST InMemoryDatabase, necessario remover para usar API REST Externa.
+   // HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase) // Confg para usar a API REST InMemoryDatabase, necessario remover para usar API REST Externa.
     
   ],
 
