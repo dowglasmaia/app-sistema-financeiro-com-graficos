@@ -8,7 +8,7 @@ export const environment = {
   production: false,
 
     /* url do servidor*/
-    url_api: 'http://localhost:8080/',
+    url_api: 'http://localhost:8080',
 
 
   /* headers - Definindo o Tipo de Conteudo que é Passo no corpo da requisição*/
