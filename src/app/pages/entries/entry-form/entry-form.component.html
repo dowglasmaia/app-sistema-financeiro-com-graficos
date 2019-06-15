@@ -134,7 +134,7 @@
                     <label for="category">Categoria</label>
                     <select class="form-control" formControlName="category"  name="category"
                         id="category">
-                        <option *ngFor="let obj of categories" [value]="obj.id">{{obj.name}}</option>
+                        <option *ngFor="let obj of categories" [value]="obj">{{obj.name}}</option>
                        
                     </select>
                     
@@ -167,5 +167,6 @@
     </button>
 
 </form>
+
 
 

@@ -43,24 +43,22 @@
             <td class="text-right">
                 <strong [class.text-success]="entry.type == 'revenue'" [class.text-danger]="entry.type == 'expense'">
                     {{entry.amount}}
-                    <br/>
-              <span class="badge badge-light">{{entry.paidText}}</span>
+                    <br />
+                    <span class="badge badge-light">{{entry.paidText}}</span>
                 </strong>
             </td>
 
             <!-- Ações-->
             <td class="text-center">
-                <a [routerLink]="[entry.id, 'edit']" class="btn
-                        btn-outline-info
-                        mr-1
-                        btn-sm"> Editar <i class="fas fa-edit"></i>
-                    </a>
+                <a [routerLink]="[entry.id, 'edit']" class="btn btn-outline-info mr-1 btn-sm"> 
+                    Editar 
+                <i class="fas fa-edit"></i>
+                </a>
 
-                <button type="button" (click)="deleteEntry(entry)" class="btn
-                        btn-outline-danger btn-sm">
-                        Delete
-                        <i class="fas fa-eraser"></i>
-                    </button>
+                <button type="button" (click)="deleteEntry(entry)" class="btn btn-outline-danger btn-sm">
+                     Delete
+                    <i class="fas fa-eraser"></i>
+                </button>
             </td>
         </tr>
 

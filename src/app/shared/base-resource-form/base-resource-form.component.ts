@@ -107,6 +107,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
             resource => this.actionsForSuccess(resource),  //sucesso
             error => this.actionsForError(error)  // Error
         )
+        console.log(this.resource)
     }
 
     /* Update*/

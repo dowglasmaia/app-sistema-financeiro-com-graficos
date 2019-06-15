@@ -15,7 +15,7 @@ import { CategoryService } from '../../categories/shared/category.service';
 })
 export class entryFormComponent extends BaseResourceFormComponent<Entry> implements OnInit {
 
-  categories: Array<Category>;
+  categories: Array<Category> ;
 
   /* Configuração do Imask, Mascara da Moeda - Padrõ Brasil*/
   imaskConfig = {
