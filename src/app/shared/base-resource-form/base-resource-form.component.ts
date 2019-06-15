@@ -49,7 +49,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     submitForm() {
         this.submittingForm = true;
 
-        if (this.currentAction == "new") {
+        if (this.resource.id == null) {
             this.createResource();
         } else {
             this.updateResource();
@@ -71,11 +71,9 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
         if (this.currentAction == "edit") {
             this.route.paramMap.pipe(
                 switchMap(params => this.resourceService.getById(+params.get("id"))) // usar o sinal de +, para converter para um numero
-            )
-                .subscribe(
-                    (resource) => {
+            ).subscribe((resource) => {
                         this.resource = resource;
-                        this.resourceForm.patchValue(resource); // bind  - setando os valores do formulario
+                        this.resourceForm.patchValue(this.resource); // bind  - setando os valores do formulario
                     },
                     (error) => alert('Ocorreu um erro no Servidor, tente mas tarde.')
                 )
@@ -115,7 +113,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     protected updateResource() {
         const resource: T = this.jsonDataToResourceFn(this.resourceForm.value);
 
-        this.resourceService.create(resource).subscribe(
+        this.resourceService.update(resource).subscribe(
             resource => this.actionsForSuccess(resource),  //sucesso
             error => this.actionsForError(error)  // Error
         )

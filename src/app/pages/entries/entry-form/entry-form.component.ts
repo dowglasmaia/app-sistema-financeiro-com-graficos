@@ -72,6 +72,7 @@ export class entryFormComponent extends BaseResourceFormComponent<Entry> impleme
       }
     )
   }
+  
 
   /* Criando o Formulario da Categoria*/
   protected buildResourceForm() {
@@ -83,7 +84,7 @@ export class entryFormComponent extends BaseResourceFormComponent<Entry> impleme
       amount: [null, [Validators.required]],
       date: [null, [Validators.required]],
       paid: [true, [Validators.required]],
-      categoriId: [null],
+      category: [null],
     })
   }
 
