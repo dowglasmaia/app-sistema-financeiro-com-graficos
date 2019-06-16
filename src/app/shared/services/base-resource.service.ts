@@ -44,15 +44,15 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
     /* Update -  PUT */
     public update(recource: T): Observable<T> {
         const url = `${environment.url_api}/${this.apiPath}/${recource.id}`;
-        return this.http.put(url, recource).pipe(
-            map(this.jsonDataToRecource.bind(this)),  // o in-memory não retorna denhum dado quando atualiza , por isso não utilizei o - map(this.jsonDataToRecource), em caso de uma API Real utilizo normalmente.
+        return this.http.put<T>(url, recource).pipe(
+            map(this.jsonDataToRecource.bind(this)),  
             catchError(this.handleError)
         )
     }
 
     /* POST - SAVE*/
     public create(recource: T): Observable<T> {
-        return this.http.post(`${environment.url_api}/${this.apiPath}`, recource).pipe(
+        return this.http.post<T>(`${environment.url_api}/${this.apiPath}`, recource).pipe(
             map(this.jsonDataToRecource.bind(this)),
             catchError(this.handleError),
         )

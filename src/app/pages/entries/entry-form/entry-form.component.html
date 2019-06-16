@@ -70,7 +70,7 @@
                             <div class="input-group-text"> R$ </div>
                         </div>
                         <!-- imask , define a mascara do campo-->
-                        <input  type="text" class="form-control text-right" id="valor"
+                        <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" type="text" class="form-control text-right" id="valor"
                             formControlName="amount">
                     </div>
 
@@ -133,7 +133,7 @@
                 <div class="form-group col-2">
                     <label for="category">Categoria</label>
                     <select class="form-control" formControlName="categoryId"  name="categoryId"
-                        id="category">
+                        id="category">                       
                         <option *ngFor="let obj of categories" [value]="obj.id">{{obj.name}}</option>
                        
                     </select>
@@ -143,15 +143,12 @@
                         <div *ngIf="resourceForm.get('categoryId').errors['required']">
                             Informe uma Categoria
                         </div>
-                    </div>
-                 
+                    </div>                 
                 </div>
 
 
             </div>
-
         </div>
-
     </div>
 
     <!-- ERROR DO SERVIDOR-->

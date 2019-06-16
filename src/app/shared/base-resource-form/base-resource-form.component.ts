@@ -103,6 +103,8 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     protected createResource() {
         const resource: T = this.jsonDataToResourceFn(this.resourceForm.value);     
 
+        console.log("Psssou Pelo Save")
+
         this.resourceService.create(resource).subscribe(
             resource => this.actionsForSuccess(resource),  //sucesso
             error => this.actionsForError(error)  // Error
@@ -112,7 +114,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
     /* Update*/
     protected updateResource() {
-        console.log("Psssou Pelo Update")
+       
         const resource: T = this.jsonDataToResourceFn(this.resourceForm.value);
 
         this.resourceService.update(resource).subscribe(
