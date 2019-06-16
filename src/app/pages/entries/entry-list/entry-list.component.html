@@ -31,7 +31,7 @@
     <tbody>
 
         <!-- Categorias-->
-        <tr *ngFor="let entry of entries">
+        <tr *ngFor="let entry of resources">
             <td>
                 <strong>{{entry.name}}</strong><br>
                 <strong class="text-success">{{entry.date}}</strong><br>
@@ -55,7 +55,7 @@
                     <i class="fas fa-edit"></i>
                 </a>
 
-                <button type="button" (click)="deleteEntry(entry)" class="btn btn-outline-danger btn-sm">
+                <button type="button" (click)="deleteResource(entry)" class="btn btn-outline-danger btn-sm">
                     Delete
                     <i class="fas fa-eraser"></i>
                 </button>
