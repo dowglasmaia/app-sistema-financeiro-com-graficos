@@ -52,7 +52,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
 
     /* POST - SAVE*/
     public create(recource: T): Observable<T> {
-        return this.http.post<T>(`${environment.url_api}/${this.apiPath}`, recource).pipe(
+        return this.http.post(`${environment.url_api}/${this.apiPath}`, recource).pipe(
             map(this.jsonDataToRecource.bind(this)),
             catchError(this.handleError),
         )

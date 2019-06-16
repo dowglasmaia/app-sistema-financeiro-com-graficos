@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Sat Jun 15 2019 21:25:12 GMT-0300 (Hora oficial do Brasil)
+------------------------------------------------------
+
+Modified files:
+* src/app/shared/base-resource-form/base-resource-form.component.ts
+
+
+Created files:
+* .autogit/logs/log-15-5-2019-20-54-58.txt
+
+
+Deleted files:
+
+
+Renamed files:

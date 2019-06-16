@@ -132,18 +132,19 @@
                 <!--Categoria-->
                 <div class="form-group col-2">
                     <label for="category">Categoria</label>
-                    <select class="form-control" formControlName="category"  name="category"
+                    <select class="form-control" formControlName="categoryId"  name="categoryId"
                         id="category">
-                        <option *ngFor="let obj of categories" [value]="obj">{{obj.name}}</option>
+                        <option *ngFor="let obj of categories" [value]="obj.id">{{obj.name}}</option>
                        
                     </select>
-                    
-                    <div class="text-danger" *ngIf="resourceForm.get('category').invalid &&
-                                 resourceForm.get('category').touched">
-                        <div *ngIf="resourceForm.get('category').errors['required']">
+                    <!--   -->
+                    <div class="text-danger" *ngIf="resourceForm.get('categoryId').invalid &&
+                                 resourceForm.get('categoryId').touched">
+                        <div *ngIf="resourceForm.get('categoryId').errors['required']">
                             Informe uma Categoria
                         </div>
                     </div>
+                 
                 </div>
 
 
@@ -167,6 +168,10 @@
     </button>
 
 </form>
+
+<pre>
+    {{resourceForm.value | json}}
+</pre>
 
 
 
