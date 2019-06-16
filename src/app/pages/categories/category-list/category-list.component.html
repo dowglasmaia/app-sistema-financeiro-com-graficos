@@ -28,8 +28,8 @@
         </tr>
     </thead>
     <tbody>
-        <!-- Categorias-->
-        <tr *ngFor="let category of categories">
+        <!-- Categorias   - resources * declarado na baseResourcesListe-->
+        <tr *ngFor="let category of resources">
             <td>
                 <strong>{{category.name}}</strong><br>
                 <small>{{category.description}}</small>
@@ -40,7 +40,7 @@
                     btn-sm"> Editar <i class="fas fa-edit"></i>
                 </a>
                 
-                <button type="button" (click)="deleteCategory(category)" class="btn
+                <button type="button" (click)="deleteResource(category)" class="btn
                     btn-outline-danger btn-sm">Delete<i class="fas fa-eraser"></i>
                 </button>
             </td>
