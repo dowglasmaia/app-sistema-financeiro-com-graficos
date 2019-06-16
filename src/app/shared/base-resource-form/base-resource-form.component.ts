@@ -48,7 +48,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     /* Submissão do Formulario*/
     submitForm() {
         this.submittingForm = true;
-
+     
         if (this.resource.id == null) {
             this.createResource();
         } else {
@@ -103,11 +103,13 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     protected createResource() {
         const resource: T = this.jsonDataToResourceFn(this.resourceForm.value);
 
+        console.log(this.resource)
+        
         this.resourceService.create(resource).subscribe(
             resource => this.actionsForSuccess(resource),  //sucesso
             error => this.actionsForError(error)  // Error
         )
-        console.log(this.resource)
+       
     }
 
     /* Update*/
