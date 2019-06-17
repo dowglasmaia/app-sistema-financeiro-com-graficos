@@ -1,38 +1,162 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
-  <div class="container">
-
-    <a class="navbar-brand" routerLink="/">MAIA - FIN$</a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-      data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-      aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-       
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="/reports">Relatórios
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="/entries">Lançamentos</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="categories">Categorias</a>
-        </li>
-
-      </ul>
-    </div>
+<div class="preloader">
+  <div class="lds-ripple">
+    <div class="lds-pos"></div>
+    <div class="lds-pos"></div>
   </div>
-</nav>
+</div>
 
-<!--Container -->
-<div class="container">
+<div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full"
+  data-boxed-layout="full">
 
-  <router-outlet></router-outlet>
+  <header class="topbar" data-navbarbg="skin6">
+    <nav class="navbar top-navbar navbar-expand-md navbar-light">
+      <div class="navbar-header" data-logobg="skin5">
+        <!-- This is for the sidebar toggle which is visible on mobile only -->
+        <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+          <i class="ti-menu ti-close"></i>
+        </a>
 
+        <!-- Logo -->
+        <div class="navbar-brand">
+          <a href="#" class="logo">
+            <!-- Logo text -->
+            <span class="logo-text">
+              <!-- dark Logo text -->
+              <span alt="homepage" class="light-logo text-center">Sys<strong>Maia</strong></span>
+            </span>
+          </a>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Logo -->
+        <!-- ============================================================== -->
+
+        <!-- ============================================================== -->
+        <!-- Toggle which is visible on mobile only -->
+        <!-- ============================================================== -->
+        <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
+          data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <i class="ti-more"></i>
+        </a>
+      </div>
+      <!-- ============================================================== -->
+      <!-- End Logo -->
+      <!-- ============================================================== -->
+      <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6">
+
+        <span class="navbar-nav float-left mr-auto">
+
+        </span>
+
+        <ul class="navbar-nav float-right">
+          <h5>Dowglas Maia</h5>
+        </ul>
+
+      </div>
+    </nav>
+  </header>
+  <!-- ============================================================== -->
+  <!-- End Topbar header -->
+  <!-- ============================================================== -->
+
+  <!-- ============================================================== -->
+  <!-- Left Sidebar - style you can find in sidebar.scss  -->
+  <!-- ============================================================== -->
+  <aside class="left-sidebar" data-sidebarbg="skin5">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+      <!-- Sidebar navigation-->
+      <nav class="sidebar-nav">
+        <ul id="sidebarnav">
+
+          <li class="sidebar-item">
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false">
+              <i class="fas fa-home"></i>
+              <span class="hide-menu">Dashboard</span>
+            </a>
+          </li>
+
+          <li class="sidebar-item">
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLinkActive="active" routerLink="/entries"
+              aria-expanded="false">
+              <i class="fas fa-feather-alt"></i>
+              <span class="hide-menu">Lançamentos</span>
+            </a>
+          </li>
+
+          <li class="sidebar-item">
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLinkActive="active"
+              routerLink="categories" aria-expanded="false">
+              <i class="fas fa-chart-pie"></i>
+              <span class="hide-menu">Categorias</span>
+            </a>
+          </li>
+
+          <li class="sidebar-item">
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLinkActive="active" routerLink="/reports"
+              aria-expanded="false">
+              <i class="fas fa-chart-line"></i>
+              <span class="hide-menu">Relatórios</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+  </aside>
+  <!-- ============================================================== -->
+  <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+  <!-- ============================================================== -->
+
+  <!-- ============================================================== -->
+  <!-- Page wrapper  -->
+  <!-- ============================================================== -->
+  <div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+      <div class="row">
+        <div class="col-5 align-self-center">
+          <h4 class="page-title">Dashboard</h4>
+        </div>
+        <div class="col-7 align-self-center">
+          <div class="d-flex align-items-center justify-content-end">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+
+      <router-outlet></router-outlet>
+
+    </div>
+    <!-- End Container fluid  -->
+
+    <!-- footer -->
+    <footer class="footer text-center">
+      Desenvolvimento:
+      <strong><a href="https://github.com/dowglasmaia" target="_new">Dowglas Maia</a></strong> | &copy; 2019
+
+    </footer>
+    <!-- End footer -->
+
+  </div>
+  <!-- End Page wrapper  -->
 </div>
