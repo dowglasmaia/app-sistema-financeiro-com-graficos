@@ -1,18 +1,33 @@
-<nav class="mb-5">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a routerLink="/">Home</a>
-    </li>
+<div class="page-breadcrumb mb-5 ">
+  <div class="row">
 
-    <!-- Exibindo a migalha de Pão dinamicamente-->
-    <li *ngFor="let item of items" class="breadcrumb-item" [class.active]=isTheLastItem(item)>
+    <div class="col-5 align-self-center">
+      <h4 class="page-title"> ... </h4>
+    </div>
 
-      <!-- Só mostro o Texto se For o ultimo item-->
-      <span *ngIf="isTheLastItem(item)"> {{item.text}} </span>
+    <div class="col-7 align-self-center">
+      <div class="d-flex align-items-center justify-content-end">
+        <nav aria-label="breadcrumb">
+         
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a routerLink="/">Home</a>
+            </li>
 
-      <!--mostro o link se ñ for o ultimo item-->
-      <a *ngIf="!isTheLastItem(item)" [routerLink]="item.link">{{item.text}}</a>
+            <!-- Exibindo a migalha de Pão dinamicamente-->
+            <li *ngFor="let item of items" class="breadcrumb-item" [class.active]=isTheLastItem(item)>
 
-    </li>
-  </ol>
-</nav>
+              <!-- Só mostro o Texto se For o ultimo item-->
+              <span *ngIf="isTheLastItem(item)"> {{item.text}} </span>
+
+              <!--mostro o link se ñ for o ultimo item-->
+              <a *ngIf="!isTheLastItem(item)" [routerLink]="item.link">{{item.text}}</a>
+
+            </li>
+          </ol>
+
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

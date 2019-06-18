@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { IMaskModule } from 'angular-imask';
+import { RouterModule} from '@angular/router';
 
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import {LOCALE_ID} from '@angular/core';
@@ -20,19 +20,20 @@ registerLocaleData(localePt);
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
-    IMaskModule,
+    ReactiveFormsModule, 
     CalendarModule,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    RouterModule
   ],
 
   exports: [
     //shared modules
     CommonModule,
-    ReactiveFormsModule,
-    IMaskModule,
+    ReactiveFormsModule,  
     CalendarModule,
     CurrencyMaskModule,
+    RouterModule,
+
 
     // shared components
     BreadCrumbComponent
