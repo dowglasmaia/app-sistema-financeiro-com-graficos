@@ -9,12 +9,15 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 
 import { CalendarModule } from 'primeng/calendar';
+import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
 
 //Registrando pt-BR para usar o pipe de Moedas
 registerLocaleData(localePt);
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    BreadCrumbComponent
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -24,11 +27,15 @@ registerLocaleData(localePt);
   ],
 
   exports: [
+    //shared modules
     CommonModule,
     ReactiveFormsModule,
     IMaskModule,
     CalendarModule,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+
+    // shared components
+    BreadCrumbComponent
   ],
   
   providers: [
