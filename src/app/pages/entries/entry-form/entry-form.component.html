@@ -3,20 +3,14 @@
  [items]= "[{text: 'Lançamentos', link: '/entries'}, {text: pageTitle}]"
  > </app-bread-crumb>
 
-<div class="row mb-4">
-    <div class="col-md-9">
-        <h1 class="h2 border-left pl-2" style="color: rgba(197, 106, 73, 0.829)">
-            {{pageTitle}}
-        </h1>
-    </div>
-
-    <div class="col-md-3">
-        <a routerLink="/entries" class="btn btn-ligth float-right">
-            <i class="fas fa-angle-double-left"></i>
-            <label> Voltar</label>
-        </a>
-    </div>
-</div>
+<!-- HEADER -  Dinâmico-->
+ <app-page-header
+   [page-title] = "pageTitle"
+   button-text = "Voltar"
+   button-link = "/entries"
+   button-class = "btn-warning"
+   icon-class="fas fa-angle-double-left"
+ ></app-page-header>
 
 <!-- FORMULARIO -->
 <form [formGroup]="resourceForm" (ngSubmit)="submitForm()">

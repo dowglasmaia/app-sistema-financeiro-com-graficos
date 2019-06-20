@@ -1,23 +1,16 @@
-
- <!--Migalha de Pão-->
+ <!--BREAD-CRUMB  - Migalha de Pão-->
  <app-bread-crumb
- [items]= "[{text: 'Category', link: '/categories'}, {text: pageTitle}]"
- > </app-bread-crumb>
+     [items]= "[{text: 'Category', link: '/categories'}, {text: pageTitle}]">
+ </app-bread-crumb>
 
-<div class="row mb-4">
-    <div class="col-md">
-        <h1 class="h2 border-left pl-2" style="color: rgba(233, 98, 49, 0.829)">
-            {{pageTitle}}
-        </h1>
-    </div>
-
-    <div class="col-md">
-        <a routerLink="/categories" class="btn btn-ligth float-right">
-            <i class="fas fa-angle-double-left"></i>
-            <label> Voltar</label>
-        </a>
-    </div>
-</div>
+ <!-- HEADER -  Dinâmico-->
+ <app-page-header
+    [page-title] = "pageTitle"
+    icon-class="fas fa-angle-double-left"
+    button-text = "Voltar"
+    button-link = "/categories"
+    button-class = "btn-light"
+ ></app-page-header>
 
 <!-- FORMULARIO -->
 <form [formGroup]="resourceForm" (ngSubmit)="submitForm()">

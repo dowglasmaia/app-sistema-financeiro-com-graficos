@@ -3,20 +3,16 @@
     [items]= "[{text: 'Categorias'}]"
  > </app-bread-crumb>
 
+  <!-- HEADER -  Dinâmico-->
+  <app-page-header
+  page-title = "Categorias"
+  button-text = "Nova Categoria"
+  button-link = "new"
+  button-class = "btn-warning"
+  icon-class="fas fa-plus"
+></app-page-header>
 
-<div class="row mb-4">
-    <div class="col-md">
-        <h1 class="h2 border-left pl-2">
-            Categorias
-        </h1>
-    </div>
 
-    <div class="col-md">
-        <a routerLink="new" class="btn btn-warning float-right">
-            + Nova Categoria
-        </a>
-    </div>
-</div>
 
 <table class="table table-hover">
     <thead>

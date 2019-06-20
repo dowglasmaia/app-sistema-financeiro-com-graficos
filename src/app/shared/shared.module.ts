@@ -10,6 +10,7 @@ import localePt from '@angular/common/locales/pt';
 
 import { CalendarModule } from 'primeng/calendar';
 import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
+import { PageHeaderComponent } from './components/page-header/page-header.component';
 
 
 //Registrando pt-BR para usar o pipe de Moedas
@@ -17,7 +18,8 @@ registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
-    BreadCrumbComponent,   
+    BreadCrumbComponent,
+    PageHeaderComponent,   
     
   ],
   imports: [
@@ -40,7 +42,7 @@ registerLocaleData(localePt);
 
     // shared components
     BreadCrumbComponent,
-  
+    PageHeaderComponent
   ],
   
   providers: [   
