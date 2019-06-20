@@ -1,132 +1,104 @@
-<div class="preloader">
-  <div class="lds-ripple">
-    <div class="lds-pos"></div>
-    <div class="lds-pos"></div>
-  </div>
-</div>
+<!-- Page Wrapper -->
+<div id="wrapper">
 
-<div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full"
-  data-boxed-layout="full">
+  <!-- Sidebar -->
+  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-  <header class="topbar" data-navbarbg="skin6">
-    <nav class="navbar top-navbar navbar-expand-md navbar-light">
-      <div class="navbar-header" data-logobg="skin5">
-        <!-- This is for the sidebar toggle which is visible on mobile only -->
-        <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
-          <i class="ti-menu ti-close"></i>
-        </a>
 
-        <!-- Logo -->
-        <div class="navbar-brand">
-          <a href="#" class="logo">
-            <!-- Logo text -->
-            <span class="logo-text">
-              <!-- dark Logo text -->
-              <span alt="homepage" class="light-logo text-center">Sys<strong>Maia</strong></span>
-            </span>
-          </a>
+    <!-- Sidebar - Brand -->
+    <a routerLink="/home" class="sidebar-brand d-flex align-items-center mb-5 mt-5
+          justify-content-center">
+      <div class="sidebar-brand-icon mt-4">
+        <img src="./../assets/img/logo.png" class="img-fluid" style="width: 90%" alt="Imagem responsiva">
+      </div>
+    </a>
+
+
+    <li class="nav-item mt-4">
+      <a class="nav-link" href="#" aria-expanded="false">
+        <i class="fas fa-home"></i>
+        <span class="hide-menu">Relatório</span>
+      </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0 mb-2">
+
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" routerLink="/entries" aria-expanded="false">
+        <i class="fas fa-feather-alt"></i>
+        <span class="hide-menu">Lançamento</span>
+      </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0 mb-2">
+
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" routerLink="categories" aria-expanded="false">
+        <i class="fas fa-chart-pie"></i>
+        <span class="hide-menu">Categorias</span>
+      </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0 mb-4">
+
+
+  </ul>
+  <!-- End of Sidebar -->
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+
+      <!-- Nave Menu -->     
+        <app-nav></app-nav>     
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+
+        <router-outlet></router-outlet>
+
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer  -->
+      <footer class="sticky-footer fixed-bottom" style="font-size: 12px !important">
+        <div class="container mt-5 text-center">
+
+          <div class="pull-right hidden-xs nav-link " >
+            Desenvolvimento:<a href="https://github.com/dowglasmaia" target="_new"  >
+              <strong> Dowglas Maia</strong></a>
+          </div>
+
+          &copy; 2019 | <strong> Maia Systemas </strong>
         </div>
-        <!-- ============================================================== -->
-        <!-- End Logo -->
-        <!-- ============================================================== -->
+      </footer>
 
-        <!-- ============================================================== -->
-        <!-- Toggle which is visible on mobile only -->
-        <!-- ============================================================== -->
-        <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
-          data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-          aria-expanded="false" aria-label="Toggle navigation">
-          <i class="ti-more"></i>
-        </a>
-      </div>
-      <!-- ============================================================== -->
-      <!-- End Logo -->
-      <!-- ============================================================== -->
-      <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6">
-
-        <span class="navbar-nav float-left mr-auto">
-
-        </span>
-
-        <ul class="navbar-nav float-right">
-          <h5>Dowglas Maia</h5>
-        </ul>
-
-      </div>
-    </nav>
-  </header>
-  <!-- ============================================================== -->
-  <!-- End Topbar header -->
-  <!-- ============================================================== -->
-
-  <!-- ============================================================== -->
-  <!-- Left Sidebar - style you can find in sidebar.scss  -->
-  <!-- ============================================================== -->
-  <aside class="left-sidebar" data-sidebarbg="skin5">
-    <!-- Sidebar scroll-->
-    <div class="scroll-sidebar">
-      <!-- Sidebar navigation-->
-      <nav class="sidebar-nav">
-        <ul id="sidebarnav">
-
-          <li class="sidebar-item">
-            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false">
-              <i class="fas fa-home"></i>
-              <span class="hide-menu">Dashboard</span>
-            </a>
-          </li>
-
-          <li class="sidebar-item">
-            <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLinkActive="active" routerLink="/entries"
-              aria-expanded="false">
-              <i class="fas fa-feather-alt"></i>
-              <span class="hide-menu">Lançamentos</span>
-            </a>
-          </li>
-
-          <li class="sidebar-item">
-            <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLinkActive="active"
-              routerLink="categories" aria-expanded="false">
-              <i class="fas fa-chart-pie"></i>
-              <span class="hide-menu">Categorias</span>
-            </a>
-          </li>
-
-          <li class="sidebar-item">
-            <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLinkActive="active" routerLink="/reports"
-              aria-expanded="false">
-              <i class="fas fa-chart-line"></i>
-              <span class="hide-menu">Relatórios</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- End Sidebar navigation -->
-    </div>
-    <!-- End Sidebar scroll-->
-  </aside>
-
-
-  <!-- ============================================================== -->
-  <!-- Page wrapper  -->
-  <!-- ============================================================== -->
-  <div class="page-wrapper">
-
-    <div class="container-fluid">
-
-      <router-outlet></router-outlet>
+      <!-- End of Footer -->
 
     </div>
-    <!-- End Container fluid  -->
-
-    <!-- footer -->
-    <footer class="footer text-center">
-      Desenvolvimento:
-      <strong><a href="https://github.com/dowglasmaia" target="_new">Dowglas Maia</a></strong> | &copy; 2019
-
-    </footer>
-    <!-- End footer -->
+    <!-- End of Content Wrapper -->
 
   </div>
-  <!-- End Page wrapper  -->
-</div>
+  <!-- Rodape da Pagina 
+  <div class="col-12 footer mt-4">
+      <span style="text-align: right; float: left; margin-top: 10px">
+          &copy; 2019 | Carpal Tratores
+      </span>
+
+      <span style="text-align: right; float: right; margin-top: 10px">
+          Desenvolvimento:
+          <strong>Dowglas Maia</strong>
+      </span>
+  </div>
+  End of Page Wrapper -->
+
+  <!-- Scroll to Top Button
+  <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up mr-2"></i>
+  </a>
+  -->

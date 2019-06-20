@@ -5,13 +5,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
-import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
-import { InMemoryDatabase } from './../in-memory-database';
+//import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
+//import { InMemoryDatabase } from './../in-memory-database';
+import { NavComponent } from './components/nav/nav.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    NavComponent
+  ],
 
   imports: [
     BrowserModule,
@@ -26,6 +28,7 @@ import { InMemoryDatabase } from './../in-memory-database';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    NavComponent
   ]
 })
 export class CoreModule { }
