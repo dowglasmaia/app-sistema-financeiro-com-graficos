@@ -11,6 +11,8 @@ import localePt from '@angular/common/locales/pt';
 import { CalendarModule } from 'primeng/calendar';
 import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { FormFieldErrorComponent } from './components/form-field-error/form-field-error.component';
+import { ServerErrorMessagensComponent } from './components/server-error-messagens/server-error-messagens.component';
 
 
 //Registrando pt-BR para usar o pipe de Moedas
@@ -19,7 +21,9 @@ registerLocaleData(localePt);
 @NgModule({
   declarations: [
     BreadCrumbComponent,
-    PageHeaderComponent,   
+    PageHeaderComponent,
+    FormFieldErrorComponent,
+    ServerErrorMessagensComponent,   
     
   ],
   imports: [
@@ -42,7 +46,9 @@ registerLocaleData(localePt);
 
     // shared components
     BreadCrumbComponent,
-    PageHeaderComponent
+    PageHeaderComponent,
+    FormFieldErrorComponent,
+    ServerErrorMessagensComponent
   ],
   
   providers: [   

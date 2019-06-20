@@ -28,7 +28,8 @@ import { NavComponent } from './components/nav/nav.component';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    NavComponent
+    NavComponent,
+    
   ]
 })
 export class CoreModule { }

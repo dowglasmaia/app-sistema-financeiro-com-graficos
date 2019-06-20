@@ -1,16 +1,10 @@
- <!--BREAD-CRUMB  - Migalha de Pão-->
- <app-bread-crumb
-     [items]= "[{text: 'Category', link: '/categories'}, {text: pageTitle}]">
- </app-bread-crumb>
+<!--BREAD-CRUMB  - Migalha de Pão-->
+<app-bread-crumb [items]="[{text: 'Category', link: '/categories'}, {text: pageTitle}]">
+</app-bread-crumb>
 
- <!-- HEADER -  Dinâmico-->
- <app-page-header
-    [page-title] = "pageTitle"
-    icon-class="fas fa-angle-double-left"
-    button-text = "Voltar"
-    button-link = "/categories"
-    button-class = "btn-light"
- ></app-page-header>
+<!-- HEADER -  Dinâmico-->
+<app-page-header [page-title]="pageTitle" icon-class="fas fa-angle-double-left" button-text="Voltar"
+    button-link="/categories" button-class="btn-light"></app-page-header>
 
 <!-- FORMULARIO -->
 <form [formGroup]="resourceForm" (ngSubmit)="submitForm()">
@@ -23,14 +17,11 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="name">Nome</label>
-                    <input type="text" class="form-control" id="name"
-                        formControlName="name">
+                    <input type="text" class="form-control" id="name" formControlName="name">
 
-                    <div class="text-danger"
-                        *ngIf="resourceForm.get('name').invalid &&
+                    <div class="text-danger" *ngIf="resourceForm.get('name').invalid &&
                         resourceForm.get('name').touched">
-                        <div
-                            *ngIf="resourceForm.get('name').errors['required']">Campo
+                        <div *ngIf="resourceForm.get('name').errors['required']">Campo
                             Obrigatório.</div>
                     </div>
                 </div>
@@ -38,24 +29,18 @@
 
                 <div class="form-group col-md-8">
                     <label for="description">Descrição</label>
-                    <input type="text" class="form-control" id="description"
-                        formControlName="description">
+                    <input type="text" class="form-control" id="description" formControlName="description">
                 </div>
             </div>
         </div>
 
     </div>
 
-    <!-- ERROR DO SERVIDOR-->
-    <div class="alert alert-danger mt-4" *ngIf="serverErrorMessages">
-        <strong>Erro no Servidor</strong>
-        <ul>
-            <li *ngFor="let error of serverErrorMessages">{{error}}</li>
-        </ul>
-    </div>
+    <!-- Error do Servidor / passo a variavel que existe no BaseResourForm **serverErrorMessages**-->
+    <app-server-error-messagens [serve-error-messages]="serverErrorMessages"></app-server-error-messagens>
 
-    <button
-        type="submit" [disabled]="submittingForm || resourceForm.invalid"
+
+    <button type="submit" [disabled]="submittingForm || resourceForm.invalid"
         class="btn btn-primary btn-lg mt-2 float-right">
         <i class="fas fa-save"></i> Salvar
     </button>

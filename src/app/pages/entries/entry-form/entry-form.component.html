@@ -1,16 +1,9 @@
- <!--Migalha de Pão-->
- <app-bread-crumb
- [items]= "[{text: 'Lançamentos', link: '/entries'}, {text: pageTitle}]"
- > </app-bread-crumb>
+<!--Migalha de Pão-->
+<app-bread-crumb [items]="[{text: 'Lançamentos', link: '/entries'}, {text: pageTitle}]"> </app-bread-crumb>
 
 <!-- HEADER -  Dinâmico-->
- <app-page-header
-   [page-title] = "pageTitle"
-   button-text = "Voltar"
-   button-link = "/entries"
-   button-class = "btn-warning"
-   icon-class="fas fa-angle-double-left"
- ></app-page-header>
+<app-page-header [page-title]="pageTitle" button-text="Voltar" button-link="/entries" button-class="btn-warning"
+    icon-class="fas fa-angle-double-left"></app-page-header>
 
 <!-- FORMULARIO -->
 <form [formGroup]="resourceForm" (ngSubmit)="submitForm()">
@@ -26,29 +19,26 @@
                 <!--Type-->
                 <div class="form-group col-2">
                     <label for="type">Tipo</label>
-                    <select class="form-control" formControlName="type" name="type" id="type">   
-                        <!-- fazendo um Laço nas Opções e Definindo os Valores dinamicamente-->                   
-                        <option *ngFor="let option of typeOptions" [value]="option.value">{{option.text}}</option>                     
+                    <select class="form-control" formControlName="type" name="type" id="type">
+                        <!-- fazendo um Laço nas Opções e Definindo os Valores dinamicamente-->
+                        <option *ngFor="let option of typeOptions" [value]="option.value">{{option.text}}</option>
                     </select>
-                     <!-- Msg de Validação-->
-                    <div class="text-danger" *ngIf="resourceForm.get('type').invalid &&
-                         resourceForm.get('type').touched">
-                        <div *ngIf="resourceForm.get('type').errors['required']">
-                            Campo Obrigatório.
-                        </div>
-                    </div>
+
+                    <!-- Msg de Validação-->
+                    <app-form-field-error [form-control]="resourceForm.get('type')"></app-form-field-error>
                 </div>
 
                 <!--Name-->
                 <div class="form-group col-md-5">
                     <label for="name">Lançamento</label>
-                    <input type="text" class="form-control" id="name" formControlName="name">
+                    <input type="email" class="form-control" id="name" formControlName="name">
 
-                    <div class="text-danger" *ngIf="resourceForm.get('name').invalid &&
-                                 resourceForm.get('name').touched">
-                        <div *ngIf="resourceForm.get('name').errors['required']">Campo Obrigatório.
-                        </div>
-                    </div>
+                    <!-- Msg de Validação-->
+                    <app-form-field-error [form-control]="resourceForm.get('name')"></app-form-field-error>
+
+                    <!-- Verificando Erros do campo
+                    <pre>{{resourceForm.get('name').errors | json}}</pre>
+                    -->
                 </div>
 
                 <!--Valor-->
@@ -59,58 +49,48 @@
                         <div class="input-prepend">
                             <div class="input-group-text"> R$ </div>
                         </div>
-                        <!-- imask , define a mascara do campo-->
-                        <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" type="text" class="form-control text-right" id="valor"
-                            formControlName="amount">
+                        <!-- define a mascara do campo moeda-->
+                        <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" type="text"
+                            class="form-control text-right" id="valor" formControlName="amount">
                     </div>
+                    <!-- Msg de Validação-->
+                    <app-form-field-error [form-control]="resourceForm.get('amount')"></app-form-field-error>
 
-                    <div class="text-danger" *ngIf="resourceForm.get('amount').invalid &&
-                                 resourceForm.get('amount').touched">
-                        <div *ngIf="resourceForm.get('amount').errors['required']">Campo Obrigatório.
-                        </div>
-                    </div>
                 </div>
 
                 <!--Data-->
                 <div class="form-group col-md-2">
                     <label for="date">Data</label>
 
-                 <!--   <input type="date" name="date" id="date" formControlName="date" class="form-control">
+                    <!--   <input type="date" name="date" id="date" formControlName="date" class="form-control">
                    -->
-                    <p-calendar  id="date" formControlName="date" inputStyleClass="form-control" dateFormat="dd/mm/yy"
-                        dataType="string" [locale]="ptBR" [showButtonBar]=true  >
+                    <p-calendar id="date" formControlName="date" inputStyleClass="form-control" dateFormat="dd/mm/yy"
+                        dataType="string" [locale]="ptBR" [showButtonBar]=true>
                     </p-calendar>
-     
-                    <div class="text-danger" *ngIf="resourceForm.get('date').invalid &&
-                                     resourceForm.get('date').touched">
-                        <div *ngIf="resourceForm.get('date').errors['required']">Campo Data é Obrigatório.
-                        </div>
-                    </div>
+                    <!-- Msg de Validação-->
+                    <app-form-field-error [form-control]="resourceForm.get('date')"></app-form-field-error>
+
                 </div>
+
             </div>
 
             <div class="form-row">
                 <!--Pago-->
                 <div class="form-group col-md-2">
-                    <label for="paid">Pago</label><br/>
+                    <label for="paid">Pago</label><br />
                     <!-- Conf o active dinamicamente com o capo que estiver marcado - [class.active]-->
                     <div class="btn-group">
                         <label [class.active]="resourceForm.get('paid').value == true"
                             (click)="resourceForm.get('paid').setValue(true)" class="btn btn-outline-info">
                             Pago
                         </label>
-                        
+
                         <label [class.active]="resourceForm.get('paid').value == false"
                             (click)="resourceForm.get('paid').setValue(false)" class="btn btn-outline-info">
                             Pendente
                         </label>
                     </div>
 
-                    <div class="text-danger" *ngIf="resourceForm.get('paid').invalid &&
-                                     resourceForm.get('paid').touched">
-                        <div *ngIf="resourceForm.get('paid').errors['required']">Campo Obrigatório.
-                        </div>
-                    </div>
                 </div>
 
                 <!--Descrição-->
@@ -122,32 +102,19 @@
                 <!--Categoria-->
                 <div class="form-group col-2">
                     <label for="category">Categoria</label>
-                    <select class="form-control" formControlName="categoryId"  name="categoryId"
-                        id="category">                       
+                    <select class="form-control" formControlName="categoryId" name="categoryId" id="category">
                         <option *ngFor="let obj of categories" [value]="obj.id">{{obj.name}}</option>
-                       
-                    </select>
-                    <!--   -->
-                    <div class="text-danger" *ngIf="resourceForm.get('categoryId').invalid &&
-                                 resourceForm.get('categoryId').touched">
-                        <div *ngIf="resourceForm.get('categoryId').errors['required']">
-                            Informe uma Categoria
-                        </div>
-                    </div>                 
-                </div>
 
+                    </select>
+
+                </div>
 
             </div>
         </div>
     </div>
 
-    <!-- ERROR DO SERVIDOR-->
-    <div class="alert alert-danger mt-4" *ngIf="serverErrorMessages">
-        <strong>Erro no Servidor</strong>
-        <ul>
-            <li *ngFor="let error of serverErrorMessages">{{error}}</li>
-        </ul>
-    </div>
+    <!-- Error do Servidor / passo a variavel que existe no BaseResourForm **serverErrorMessages**-->
+   <app-server-error-messagens [serve-error-messages]="serverErrorMessages" ></app-server-error-messagens>
 
     <button type="submit" [disabled]="submittingForm || resourceForm.invalid"
         class="btn btn-primary btn-lg mt-2 float-right">
@@ -156,9 +123,8 @@
 
 </form>
 
+<!--
 <pre>
     {{resourceForm.value | json}}
 </pre>
-
-
-
+-->
