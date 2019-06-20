@@ -14,7 +14,6 @@ import { PageHeaderComponent } from './components/page-header/page-header.compon
 import { FormFieldErrorComponent } from './components/form-field-error/form-field-error.component';
 import { ServerErrorMessagensComponent } from './components/server-error-messagens/server-error-messagens.component';
 
-
 //Registrando pt-BR para usar o pipe de Moedas
 registerLocaleData(localePt);
 

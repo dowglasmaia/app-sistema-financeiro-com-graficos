@@ -2,51 +2,7 @@
 <div id="wrapper">
 
   <!-- Sidebar -->
-  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-
-    <!-- Sidebar - Brand Usuario-->
-    <div class="sidebar-brand d-flex align-items-center mb-5 mt-5
-          justify-content-center">
-      <div class="sidebar-brand-icon mt-4">
-        <img src="./../assets/img/user_.jpg" class="img-profile rounded-circle" style="width: 70%" alt="">
-      </div>
-    </div>
-    <p class="text-center text-white">Dowglas Maia</p>
-
-    <li class="nav-item mt-4">
-      <a class="nav-link" href="#" aria-expanded="false">
-          <i class="fas fa-chart-line"></i>
-        <span class="hide-menu">Relatório</span>
-      </a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0 mb-2">
-
-    <li class="nav-item">
-      <a class="nav-link" routerLinkActive="active" routerLink="/entries" aria-expanded="false">
-        <i class="fas fa-feather-alt"></i>
-        <span class="hide-menu">Lançamento</span>
-      </a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0 mb-2">
-
-    <li class="nav-item">
-      <a class="nav-link" routerLinkActive="active" routerLink="categories" aria-expanded="false">
-        <i class="fas fa-chart-pie"></i>
-        <span class="hide-menu">Categorias</span>
-      </a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0 mb-4">
-
-
-  </ul>
-  <!-- End of Sidebar -->
+  <app-header-nav></app-header-nav>
 
   <!-- Content Wrapper -->
   <div id="content-wrapper" class="d-flex flex-column">
@@ -61,27 +17,15 @@
 
         <router-outlet></router-outlet>
 
-
       </div>
       <!-- End of Main Content -->
 
       <!-- Footer  -->
-      <footer class="sticky-footer bg-white pt-6" style="font-size: 12px !important">
-        <div class="container mt-5 text-center">
-
-          <div class="pull-right hidden-xs nav-link ">
-            Desenvolvimento:<a href="https://github.com/dowglasmaia" target="_new">
-              <strong> Dowglas Maia</strong></a>
-          </div>
-
-          &copy; 2019 | <strong> Maia Systemas </strong>
-        </div>
-      </footer>
-
-      <!-- End of Footer -->
+      <app-footer></app-footer>
 
     </div>
     <!-- End of Content Wrapper -->
 
   </div>
-  </div>
+
+</div>
