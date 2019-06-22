@@ -128,8 +128,9 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
         const baseComponentPath: string = this.route.snapshot.parent.url[0].path;
 
         //Redirect/reload component page
-        this.router.navigateByUrl(baseComponentPath, { skipLocationChange: true })
-            .then(() => this.router.navigate([baseComponentPath, resource.id, "edit"]))
+        this.router.navigateByUrl(baseComponentPath, { skipLocationChange: true }).then(
+            () => this.router.navigate([baseComponentPath, resource.id, "edit"])
+        )
     }
 
     /* Error*/

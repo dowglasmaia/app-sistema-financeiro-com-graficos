@@ -1,8 +1,7 @@
 <!--Migalha de Pão-->
 <app-bread-crumb [items]="[{text: 'Relatório de Receitas e Despesas'}]"> </app-bread-crumb>
 <!-- HEADER -  Dinâmico-->
-<app-page-header page-title="Relatório de Receitas e Despesas" 
-[show-button]="false"></app-page-header>
+<app-page-header page-title="Relatório de Receitas e Despesas" [show-button]="false"></app-page-header>
 
 <div class="card">
   <div class="card-header">
@@ -13,6 +12,7 @@
     <div class="form-row">
       <div class="form-group col-md-7">
         <label for="month">Mês</label>
+
         <select #month name="month" id="month" class="form-control">
           <option value="">Selecione um mês</option>
 
@@ -68,7 +68,7 @@
       </div>
       <div class="card-body">
         <h3 class="card-tile">
-          2500
+          {{revenueTotal}}
         </h3>
       </div>
     </div>
@@ -80,7 +80,7 @@
       </div>
       <div class="card-body">
         <h3 class="card-tile">
-          1000
+          {{expenseTotal}}
         </h3>
       </div>
     </div>
@@ -92,7 +92,7 @@
       </div>
       <div class="card-body">
         <h3 class="card-tile">
-          1500
+          {{balance}}
         </h3>
       </div>
     </div>
@@ -106,10 +106,10 @@
 <!-- Graficos-->
 <div class="row mt-5 mb-4">
   <div class="col-md-6">
-    Gráficos de Receitas
+    <p-chart type="bar" [data]="revenueChartData" [options]="chartOptions"></p-chart>
   </div>
 
   <div class="col-md-6">
-    Gráficos de Despesas
+    <p-chart type="bar" [data]="expenseChartData" [options]="chartOptions"></p-chart>
   </div>
 </div>
