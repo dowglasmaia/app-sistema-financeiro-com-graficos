@@ -7,7 +7,8 @@
     </h1>
   </div>
 
-  <div class="col-md-3 text-right">
+  <!-- Mostra se o ShowButton estar setado como true-->
+  <div *ngIf="ShowButton" class="col-md-3 text-right">
     <a [routerLink]="buttonLink" class="btn" [ngClass]="buttonClass">
       <i [ngClass]="iconClass"></i>
       {{buttonText}}
