@@ -64,8 +64,13 @@
 
                     <!--   <input type="date" name="date" id="date" formControlName="date" class="form-control">
                    -->
-                    <p-calendar id="date" formControlName="date" inputStyleClass="form-control" dateFormat="dd/mm/yy"
-                        dataType="string" [locale]="ptBR" [showButtonBar]=true>
+                    <p-calendar id="date" 
+                    formControlName="date" 
+                    inputStyleClass="form-control" 
+                    dateFormat="dd/mm/yy"
+                    dataType="string" 
+                    [locale]="ptBR" 
+                    [showButtonBar]=true>
                     </p-calendar>
                     <!-- Msg de Validação-->
                     <app-form-field-error [form-control]="resourceForm.get('date')"></app-form-field-error>

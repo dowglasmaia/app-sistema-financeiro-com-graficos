@@ -48,7 +48,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     /* Submissão do Formulario*/
     submitForm() {
         this.submittingForm = true;
-     
+
         if (this.currentAction == "new" || this.resource.id == null) {
             this.createResource();
         } else {
@@ -71,12 +71,12 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
         if (this.currentAction == "edit") {
             this.route.paramMap.pipe(
                 switchMap(params => this.resourceService.getById(+params.get("id"))) // usar o sinal de +, para converter para um numero
-            ).subscribe((resource) => {
-                        this.resource = resource;
-                        this.resourceForm.patchValue(this.resource); // bind  - setando os valores do formulario
-                    },
-                    (error) => alert('Ocorreu um erro no Servidor, tente mas tarde.')
-                )
+            ).subscribe((obj) => {
+                this.resource = obj;
+                this.resourceForm.patchValue(obj); // bind  - setando os valores do formulario
+            },
+                (error) => alert('Ocorreu um erro no Servidor, tente novamente mas tarde.! \nCaso o Error Persista contate o o Dep. de TI.')
+            )
         }
     }
 
@@ -101,20 +101,17 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
     /* Create */
     protected createResource() {
-        const resource: T = this.jsonDataToResourceFn(this.resourceForm.value);     
-
-        console.log("Psssou Pelo Save")
-
+        const resource: T = this.jsonDataToResourceFn(this.resourceForm.value);
+        
         this.resourceService.create(resource).subscribe(
             resource => this.actionsForSuccess(resource),  //sucesso
             error => this.actionsForError(error)  // Error
         )
-       
+
     }
 
     /* Update*/
     protected updateResource() {
-       
         const resource: T = this.jsonDataToResourceFn(this.resourceForm.value);
 
         this.resourceService.update(resource).subscribe(
