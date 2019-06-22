@@ -16,7 +16,8 @@
           </li>
 
           <!-- Exibindo a migalha de Pão dinamicamente-->
-          <li *ngFor="let item of items" class="breadcrumb-item" [class.active]=isTheLastItem(item)>
+          <li *ngFor="let item of items" class="breadcrumb-item" 
+          [class.active]=isTheLastItem(item)>
 
             <!-- Só mostro o Texto se For o ultimo item-->
             <span *ngIf="isTheLastItem(item)">
