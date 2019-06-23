@@ -13,6 +13,7 @@ import { HeaderNavComponent } from './components/header-nav/header-nav.component
 import { FooterComponent } from './components/footer/footer.component';
 
 
+
 @NgModule({
   declarations: [
     HeaderNavComponent,
@@ -21,11 +22,12 @@ import { FooterComponent } from './components/footer/footer.component';
   ],
 
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
     CommonModule,
+    BrowserModule,
+    BrowserAnimationsModule,    
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    
    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase) // Confg para usar a API REST InMemoryDatabase, necessario remover para usar API REST Externa.
     
   ],
@@ -37,7 +39,8 @@ import { FooterComponent } from './components/footer/footer.component';
     NavComponent,
     HeaderNavComponent,
     FooterComponent,
-    RouterModule
+    RouterModule,
+ 
     
   ]
 })

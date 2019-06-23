@@ -45,7 +45,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
     public update(recource: T): Observable<T> {
         const url = `${environment.url_api}/${this.apiPath}/${recource.id}`;
         return this.http.put<T>(url, recource).pipe(
-            map(this.jsonDataToRecource.bind(this)),  
+            map(this.jsonDataToRecource.bind(this)),
             catchError(this.handleError)
         )
     }
@@ -66,6 +66,15 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
             map(() => null), // no Delete retono null 
             catchError(this.handleError),
         )
+    }
+
+    //FIND LISTA BY NAME
+    public getRecursoByName(name: string): Observable<T[]> {
+        return this.http.get<T[]>(`${environment.url_api}/${this.apiPath}/lista?name=${name}`).pipe(
+            map(this.jsonDataToRecource.bind(this)),
+            catchError(this.handleError),
+        )
+
     }
 
     //PROTECTED METHODS

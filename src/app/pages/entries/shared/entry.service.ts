@@ -3,9 +3,11 @@ import { Entry } from './entry.model';
 import { CategoryService } from '../../categories/shared/category.service';
 import { BaseResourceService } from 'src/app/shared/services/base-resource.service';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 import * as moment from 'moment';
+import { environment } from 'src/environments/environment';
+import { Category } from '../../categories/shared/category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +16,12 @@ export class EntryService extends BaseResourceService<Entry>{
 
   constructor(
     protected injector: Injector,
-    private categoryServices: CategoryService
+    protected categoryServices: CategoryService
   ) {
     super("entries", injector, Entry.fromJson);
   }
+
+
 
   //mes e ano
   public getByMonthAndYear(month: number, year: number): Observable<Entry[]> {
@@ -40,5 +44,12 @@ export class EntryService extends BaseResourceService<Entry>{
       }
     })
   }
+
+  //FIND LISTA BY NAME
+  public getCategoryByName(name: string): Observable<Category[]> {
+    return this.http.get<Category[]>(`${environment.url_api}/categories/lista?name=${name}`);
+
+  }
+
 
 }

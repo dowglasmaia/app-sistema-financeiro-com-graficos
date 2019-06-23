@@ -113,7 +113,7 @@ export class ReportsComponent implements OnInit {
     this.categories.forEach(category => {
       //filtrando laçamentos pela categoria e tipo
       const filterEntries = this.entries.filter(
-        entry => (entry.categoryId == category.id) && (entry.type == entryType)
+        entry => (entry.category.id == category.id) && (entry.type == entryType)
       );
 
       //se for encontrados os lacamentos no filtro, soma os valores e add ao grafico
@@ -139,4 +139,3 @@ export class ReportsComponent implements OnInit {
     }
   }
 }
-

@@ -8,7 +8,6 @@ import {LOCALE_ID} from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 
-import { CalendarModule } from 'primeng/calendar';
 import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { FormFieldErrorComponent } from './components/form-field-error/form-field-error.component';
@@ -27,8 +26,7 @@ registerLocaleData(localePt);
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule, 
-    CalendarModule,
+    ReactiveFormsModule,    
     CurrencyMaskModule,
     RouterModule,
     
@@ -38,7 +36,6 @@ registerLocaleData(localePt);
     //shared modules
     CommonModule,
     ReactiveFormsModule,  
-    CalendarModule,
     CurrencyMaskModule,
     RouterModule,    
 

@@ -64,13 +64,8 @@
 
                     <!--   <input type="date" name="date" id="date" formControlName="date" class="form-control">
                    -->
-                    <p-calendar id="date" 
-                    formControlName="date" 
-                    inputStyleClass="form-control" 
-                    dateFormat="dd/mm/yy"
-                    dataType="string" 
-                    [locale]="ptBR" 
-                    [showButtonBar]=true>
+                    <p-calendar id="date" inputStyleClass ="form-control" formControlName="date"  dateFormat="dd/mm/yy"
+                        dataType="string" [locale]="ptBR" [showButtonBar]=true>
                     </p-calendar>
                     <!-- Msg de Validação-->
                     <app-form-field-error [form-control]="resourceForm.get('date')"></app-form-field-error>
@@ -106,11 +101,11 @@
 
                 <!--Categoria-->
                 <div class="form-group col-2">
-                    <label for="category">Categoria</label>
-                    <select class="form-control" formControlName="categoryId" name="categoryId" id="category">
-                        <option *ngFor="let obj of categories" [value]="obj.id">{{obj.name}}</option>
-
-                    </select>
+                    <label for="category">Categoria</label>                   
+                    <p-autoComplete id="category" inputStyleClass ="form-control"  formControlName="category"
+                        [suggestions]="categories" (completeMethod)="getCategoriesByName($event)" field="name"
+                        emptyMessage="Nenhum Registro Encontrado">
+                    </p-autoComplete>
 
                 </div>
 
@@ -119,7 +114,7 @@
     </div>
 
     <!-- Error do Servidor / passo a variavel que existe no BaseResourForm **serverErrorMessages**-->
-   <app-server-error-messagens [serve-error-messages]="serverErrorMessages" ></app-server-error-messagens>
+    <app-server-error-messagens [serve-error-messages]="serverErrorMessages"></app-server-error-messagens>
 
     <button type="submit" [disabled]="submittingForm || resourceForm.invalid"
         class="btn btn-primary btn-lg mt-2 float-right">

@@ -21,8 +21,8 @@ export class Entry extends BaseResourceModel {
     //Tipo de Despesas. para setar os valores dinamicamente no Select do formulario
     static types = {
         expense: 'Despesa',
-        revenue: 'Receita',
-    }
+        revenue: 'Receita'
+    };
 
     /* Instanciando um jsonData de Entry*/
     static fromJson(jsonData: any): Entry {
@@ -31,6 +31,6 @@ export class Entry extends BaseResourceModel {
 
     // Metodo, que passa os valores, pago ou pendente.
     get paidText(): string {
-        return this.paid ? 'Pago' : 'Pendente';
+        return this.paid ? 'Pago' : 'Pedente';
     }
 }

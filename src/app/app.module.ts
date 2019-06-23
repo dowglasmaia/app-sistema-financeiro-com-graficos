@@ -3,9 +3,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {CoreModule} from './core/core.module';
-import { NavComponent } from './core/components/nav/nav.component';
-
-
 
 @NgModule({
   declarations: [
@@ -14,7 +11,7 @@ import { NavComponent } from './core/components/nav/nav.component';
   ],
   imports: [
     CoreModule,
-    AppRoutingModule,
+    AppRoutingModule,  
   
   ],
   providers: [

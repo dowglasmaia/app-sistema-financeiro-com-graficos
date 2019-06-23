@@ -15,17 +15,7 @@ import { CategoryService } from '../../categories/shared/category.service';
 })
 export class entryFormComponent extends BaseResourceFormComponent<Entry> implements OnInit {
 
-  categories: Array<Category> ;
-
-  /* Configuração do Imask, Mascara da Moeda - Padrõ Brasil*/
-  imaskConfig = {
-    mask: Number,
-    sacle: 2,
-    thousandsSeparator: '',
-    padFractionalZeros: true,  // adiciona o Zero  no final, caso não seja colocado. ex.: 20,2 = 20,20
-    normazilizeZeros: true,
-    radix: ','
-  };
+  categories: Category[] =[] ;
 
   /* Configurando o Calendar - do PrimeNG - para Portugues*/
   ptBR = {
@@ -50,16 +40,25 @@ export class entryFormComponent extends BaseResourceFormComponent<Entry> impleme
   }
 
   ngOnInit() {
-    this.getGategories();
+    //this.getCategories();
     super.ngOnInit(); // para executar o ngOnInit da Classe Base tbm
   }
 
   /* Find Gategorias*/
-  protected getGategories() {
+  protected getCategories() {
     this.categoriesService.getAll().subscribe(
       obj => this.categories = obj
     );
   }
+
+    /* listas Empresas*/
+    protected getCategoriesByName(event) {
+      this.entryService.getCategoryByName(event.query).subscribe(lista => {
+        this.categories = lista;
+      }, error => {
+  
+      });
+    }
 
   /* Definindo os Valores do Select , e Tipos*/
   get typeOptions(): Array<any> {
@@ -84,7 +83,7 @@ export class entryFormComponent extends BaseResourceFormComponent<Entry> impleme
       amount: [null, [Validators.required]],
       date: [null, [Validators.required]],
       paid: [true],
-      categoryId:  [null],
+      category:  [null],
     })
   }
 
