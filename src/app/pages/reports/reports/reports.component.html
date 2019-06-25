@@ -6,15 +6,19 @@
 
   <div class="card">
     <div class="card-header">
-      Selecione o Mês e ano para gerar os relatórios!
+      <i class="far fa-calendar-alt"></i>
+      Selecione o Mês e ano para gerar os relatórios! - Para Realizar os Teste selecione o <strong>MÊS JUNHO, ANO
+        2019</strong>
     </div>
 
     <div class="card-body">
       <div class="form-row">
         <div class="form-group col-md-7">
+          <i class="fas fa-calendar-check mr-2"></i>
           <label for="month">Mês</label>
 
-          <select #month name="month" id="month" class="form-control">
+          <select #month name="month" id="month" class="custom-select">
+
             <option value="">Selecione um mês</option>
 
             <option value="1">Janeiro</option>
@@ -34,13 +38,11 @@
         </div>
 
         <div class="form-group col-md-5">
+          <i class="fas fa-calendar-check mr-2"></i>
           <label for="year">Ano</label>
-          <select #year name="year" id="year" class="form-control">
+          <select #year name="year" id="year" class="custom-select">
             <option value="">Selecione um Ano</option>
 
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
             <option value="2018">2018</option>
             <option value="2019">2019</option>
 
@@ -65,7 +67,9 @@
       <!-- card Receitas-->
       <div class="card text-center text-white bg-success">
         <div class="card-header">
+          <i class="fas fa-chart-line mr-2"></i>
           TOTAL DE RECEITAS
+
         </div>
         <div class="card-body">
           <h3 class="card-tile">
@@ -77,6 +81,7 @@
       <!-- Card Despesas-->
       <div class="card text-center text-white bg-danger">
         <div class="card-header">
+          <i class="fas fa-sort-amount-down mr-2"></i>
           TOTAL DE DESPESAS
         </div>
         <div class="card-body">
@@ -89,6 +94,7 @@
       <!-- Card Saldo-->
       <div class="card text-center text-white bg-info">
         <div class="card-header">
+          <i class="fas fa-check-double mr-2"></i>
           SALDO
         </div>
         <div class="card-body">
