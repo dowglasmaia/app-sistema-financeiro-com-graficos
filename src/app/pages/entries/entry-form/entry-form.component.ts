@@ -45,14 +45,14 @@ export class entryFormComponent extends BaseResourceFormComponent<Entry> impleme
   }
 
   /* Find Gategorias*/
-  protected getCategories() {
+  public getCategories() {
     this.categoriesService.getAll().subscribe(
       obj => this.categories = obj
     );
   }
 
     /* listas Empresas*/
-    protected getCategoriesByName(event) {
+    public getCategoriesByName(event) {
       this.entryService.getCategoryByName(event.query).subscribe(lista => {
         this.categories = lista;
       }, error => {
@@ -88,11 +88,11 @@ export class entryFormComponent extends BaseResourceFormComponent<Entry> impleme
   }
 
   /* Sobrescrevendo os metodos dos Titulos*/
-  protected creationPageTitle(): string {
+  public creationPageTitle(): string {
     return "Cadastro de Novo Lançamento";
   }
 
-  protected editionPateTile(): string {
+  public editionPateTile(): string {
     const entryName = this.resource.name || "";
     return "Editando Lançamento: " + entryName;
   }
