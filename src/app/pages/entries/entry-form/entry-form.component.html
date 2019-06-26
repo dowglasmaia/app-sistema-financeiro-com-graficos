@@ -89,7 +89,7 @@
 
                 <div class=" col-md-6">
                     <div>
-                        <label for="category">Categoria</label>
+                        <label for="category">Buscar Categoria <strong>(Lazer ou Combustível) - select autoComplete</strong></label>
                     </div>
                     <p-autoComplete id="category" inputStyleClass="custom-select" formControlName="category"
                         [suggestions]="categories" (completeMethod)="getCategoriesByName($event)" field="name"

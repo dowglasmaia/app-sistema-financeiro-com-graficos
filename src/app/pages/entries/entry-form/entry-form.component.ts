@@ -83,7 +83,7 @@ export class entryFormComponent extends BaseResourceFormComponent<Entry> impleme
       amount: [null, [Validators.required]],
       date: [null, [Validators.required]],
       paid: [true],
-      category:  [null],
+      category:  [null,[Validators.required]],
     })
   }
 
