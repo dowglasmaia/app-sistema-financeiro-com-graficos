@@ -23,9 +23,9 @@ export class EntryService extends BaseResourceService<Entry>{
 
 
 
-  //mes e ano
+  //mes e ano   ---- passando o id do usuario Logado
   public getByMonthAndYear(month: number, year: number): Observable<Entry[]> {
-    return this.getAll().pipe(
+    return this.getAll(1).pipe(
       map(entries => this.filterByMonthAndYear(entries, month, year))
     )
   }

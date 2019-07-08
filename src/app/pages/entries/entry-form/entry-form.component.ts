@@ -44,9 +44,9 @@ export class entryFormComponent extends BaseResourceFormComponent<Entry> impleme
     super.ngOnInit(); // para executar o ngOnInit da Classe Base tbm
   }
 
-  /* Find Gategorias*/
+  /* Find Gategorias --- passando oid do usuario Logado*/
   public getCategories() {
-    this.categoriesService.getAll().subscribe(
+    this.categoriesService.getAll(1).subscribe(
       obj => this.categories = obj
     );
   }

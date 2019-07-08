@@ -46,11 +46,14 @@ export class ReportsComponent implements OnInit {
   @ViewChild('month') month: ElementRef = null;
   @ViewChild('year') year: ElementRef = null;
 
-  constructor(private entryService: EntryService, private categoryService: CategoryService) { }
+  constructor(
+    private entryService: EntryService, 
+    private categoryService: CategoryService) { }
 
   ngOnInit() {
-    //categorias
-    this.categoryService.getAll().subscribe(obj => this.categories = obj);
+    //categorias ---- passando o ID do Usuario Logado
+    this.categoryService.getAll(1).subscribe(obj => this.categories = obj);
+     
 
   }
 

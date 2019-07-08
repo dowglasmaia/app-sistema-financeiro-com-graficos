@@ -1,7 +1,5 @@
 import { OnInit } from '@angular/core';
 
-
-import { BaseResourceFormComponent } from './../base-resource-form/base-resource-form.component';
 import { BaseResourceService } from '../services/base-resource.service';
 import { BaseResourceModel } from '../models/base-resource.model';
 
@@ -15,7 +13,7 @@ export abstract class BaseResourceListComponent<T extends BaseResourceModel> imp
     ) { }
 
     ngOnInit() {
-        this.resourceService.getAll().subscribe(
+        this.resourceService.getAll(1).subscribe(
             resource => {
                 this.resources = resource.sort((a, b) => b.id - a.id);  //sort((a,b) => b.id - a.id)  Ordenação comprando A e B, colocando o ultimo adicionado na lista como prioridade.
             }, error => {

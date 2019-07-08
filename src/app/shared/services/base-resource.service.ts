@@ -24,15 +24,15 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
         this.http = injector.get(HttpClient);
     }
 
-    /* Retorna Todas as Categorias*/
-    public getAll(): Observable<T[]> {
-        return this.http.get(`${environment.url_api}/${this.apiPath}`).pipe(
+    /* list all */
+    public getAll(usuario: number): Observable<T[]> {
+        return this.http.get(`${environment.url_api}/${this.apiPath}?usuario=${usuario}`).pipe(
             map(this.jsonDataToRecources.bind(this)), // passando para a função qual this, deve ser levando dentro da mesma.
             catchError(this.handleError)
         )
     }
 
-    /* Retorna Todas as Categorias*/
+    /* find by id*/
     public getById(id: number): Observable<T> {
         const url = `${environment.url_api}/${this.apiPath}/${id}`;
         return this.http.get(url).pipe(
