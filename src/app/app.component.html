@@ -1,26 +1,45 @@
 <!-- Page Wrapper -->
 <div class="wrapper ">
 
-  <!-- Sidebar -->
-  <app-header-nav></app-header-nav>
+    <!-- ==========Quando o Usuario estiver Logado ========= -->
 
-  <div class="main-panel">
+    <!-- Sidebar -->
+    <app-header-nav *ngIf="user"></app-header-nav>
 
+    <div
+        class="main-panel"
+        *ngIf="user" >
+
+        <!-- Main Content -->
+        <div class="content">
+
+            <!-- Nave Menu -->
+            <app-nav *ngIf="user"></app-nav>
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid pb-5 mb-2">
+
+                <router-outlet></router-outlet>
+
+            </div>
+
+        </div>
+        <!-- / Content -->
+        <!-- Footer -->
+        <app-footer></app-footer>
+    </div>
+
+    <!-- ==========Sem Usuario Logado ========= -->
     <!-- Main Content -->
-    <div class="content">
+    <div class="content login">
 
-      <!-- Nave Menu -->
-      <app-nav></app-nav>
+        <!-- Begin Page Content -->
+        <div class="container-fluid pb-5 mb-2">
 
-      <!-- Begin Page Content -->
-      <div class="container-fluid pb-5 mb-2">
+            <router-outlet></router-outlet>
 
-        <router-outlet></router-outlet>
+        </div>
+    </div>
+    <!-- / Content -->
 
-      </div>
-
-    </div> <!-- / Content -->
-    <!-- Footer  -->
-    <app-footer></app-footer>
-  </div>
 </div>

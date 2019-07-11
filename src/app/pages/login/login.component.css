@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Philosopher|Satisfy&display=swap');
+
+h3{
+    font-family: 'Pacifico', cursive;
+    color: rgba(3, 21, 41, 0.842);
+}
+h5{
+    font-family: 'Satisfy', cursive;
+}
+h6{
+    font-family: 'Philosopher', sans-serif;
+}

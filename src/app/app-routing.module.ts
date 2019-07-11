@@ -11,8 +11,12 @@ const routes: Routes = [
   /*  Rota de Relatorio*/
   { path: 'reports', loadChildren: './pages/reports/reports.module#ReportsModule' },
 
-  { path: '', redirectTo: '/reports', pathMatch: 'full' },
-  
+  /*  Rota de Login*/
+  { path: 'login', loadChildren: './pages/login/login.module#LoginModule' },
+
+
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+
 
 ];
 
