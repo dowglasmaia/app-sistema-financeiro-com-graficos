@@ -3,10 +3,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {CoreModule} from './core/core.module';
+import { UserFormComponent } from './pages/user/user-form/user-form.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserFormComponent
   ],
   imports: [
     CoreModule,

@@ -24,6 +24,7 @@ export class LoginService {
 
   /* Retorna o Perfil do Usuario logado */
   public perfil(user: User): Observable<User> {
+    
     return null;
   }
 
@@ -45,7 +46,7 @@ export class LoginService {
       email: this.jwtHelperService.decodeToken(tok).sub, // pegar o email que ven dentro do token
     };
     this.storage.setLocalUser(user); // armazena o Usuario logado no Storage
-
+    
   }
 
   public logout() {

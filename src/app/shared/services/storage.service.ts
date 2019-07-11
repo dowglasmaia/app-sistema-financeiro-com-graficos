@@ -15,9 +15,11 @@ export class StorageService {
   public getLocalUser(): LocalUser {
     let user = sessionStorage.getItem(STORAGE_KEYS.localUser);
     if (user == null)
+    
       return null;
     else
       return JSON.parse(user);
+     
   }
 
   /* Recebe um Localuser e Armazena no storage */
@@ -26,6 +28,8 @@ export class StorageService {
       sessionStorage.clear();
     } else {
       sessionStorage.setItem(STORAGE_KEYS.localUser, JSON.stringify(obj));
+      
+      console.log(obj)
     }
   }
 

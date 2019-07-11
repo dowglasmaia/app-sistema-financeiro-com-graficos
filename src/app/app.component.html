@@ -6,15 +6,13 @@
     <!-- Sidebar -->
     <app-header-nav *ngIf="user"></app-header-nav>
 
-    <div
-        class="main-panel"
-        *ngIf="user" >
+    <div class="main-panel"  *ngIf="user" >
 
         <!-- Main Content -->
         <div class="content">
 
             <!-- Nave Menu -->
-            <app-nav *ngIf="user"></app-nav>
+            <app-nav ></app-nav>
 
             <!-- Begin Page Content -->
             <div class="container-fluid pb-5 mb-2">
@@ -31,7 +29,7 @@
 
     <!-- ==========Sem Usuario Logado ========= -->
     <!-- Main Content -->
-    <div class="content login">
+    <div *ngIf="!user" class="content login">
 
         <!-- Begin Page Content -->
         <div class="container-fluid pb-5 mb-2">
