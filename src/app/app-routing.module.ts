@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from './core/guards/auth-guard.service';
+import { LoginGuard } from './core/guards/login-guard.service';
 
 const routes: Routes = [
 
@@ -23,7 +24,7 @@ const routes: Routes = [
     ]
   },
   /*  Rota de Login*/
-  { path: 'login', loadChildren: './pages/login/login.module#LoginModule' },
+  { path: 'login', loadChildren: './pages/login/login.module#LoginModule', canActivate: [LoginGuard] },
 
 ];
 
