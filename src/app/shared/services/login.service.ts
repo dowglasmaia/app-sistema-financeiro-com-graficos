@@ -48,13 +48,14 @@ export class LoginService {
       email: this.jwtHelperService.decodeToken(tok).sub, // pegar o email que ven dentro do token
     };
     this.storage.setLocalUser(user); // armazena o Usuario logado no Storage
-    
+    this.route.navigate(['reports']);
   }
 
   public logout() {
     this.storage.setLocalUser(null);
+    this.route.navigate(['login']);
     sessionStorage.clear();
-    this.route.navigate(['/login'])
+    
 
   }
 }

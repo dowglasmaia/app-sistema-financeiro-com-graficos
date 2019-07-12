@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/shared/services/login.service';
-import { ResourceLoader } from '@angular/compiler';
 
 @Component({
   selector: 'app-nav',
@@ -15,12 +14,14 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
 
+
   }
 
 
-  logout() {
-    this.loginService.logout();
+  logout() { 
     location.reload();
+    this.loginService.logout();
+   
 
   }
 }

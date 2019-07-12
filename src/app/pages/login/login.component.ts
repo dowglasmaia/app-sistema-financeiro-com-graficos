@@ -49,8 +49,9 @@ export class LoginComponent implements OnInit {
   login() {
     this.auth.authenticate(this.creds).subscribe(response => {
       this.auth.sucessfulllogin(response.headers.get('Authorization'));
-
-      this.router.navigateByUrl('/reports');
+      location.reload();
+     
+    
 
     },
       error => {
