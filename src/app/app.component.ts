@@ -8,31 +8,9 @@ import { User } from './pages/user/shared/user.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-
-  user: User;
-
-  constructor(
-    private userServices: UserService,
-    private storageService: StorageService
-  ) { }
+export class AppComponent { 
 
   title = 'finansys';
 
-  ngOnInit(): void {
-    this.getUserLogado();
-  }
-
-  //find by user logged
-  public getUserLogado() {
-    let localUser = this.storageService.getLocalUser();
-
-    if (localUser && localUser.email) {
-      this.userServices.getUserByEmail(localUser.email).subscribe(
-        user => {
-          this.user = user
-        }, error => { })
-    }
-  }
 
 }

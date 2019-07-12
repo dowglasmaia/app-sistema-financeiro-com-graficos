@@ -21,7 +21,8 @@ registerLocaleData(localePt);
     BreadCrumbComponent,
     PageHeaderComponent,
     FormFieldErrorComponent,
-    ServerErrorMessagensComponent,   
+    ServerErrorMessagensComponent,  
+    
     
   ],
   imports: [
@@ -44,7 +45,8 @@ registerLocaleData(localePt);
     BreadCrumbComponent,
     PageHeaderComponent,
     FormFieldErrorComponent,
-    ServerErrorMessagensComponent
+    ServerErrorMessagensComponent,
+    
   ],
   
   providers: [   

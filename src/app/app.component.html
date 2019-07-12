@@ -1,43 +1,6 @@
 <!-- Page Wrapper -->
 <div class="wrapper ">
 
-    <!-- ==========Quando o Usuario estiver Logado ========= -->
-
-    <!-- Sidebar -->
-    <app-header-nav *ngIf="user"></app-header-nav>
-
-    <div class="main-panel"  *ngIf="user" >
-
-        <!-- Main Content -->
-        <div class="content">
-
-            <!-- Nave Menu -->
-            <app-nav ></app-nav>
-
-            <!-- Begin Page Content -->
-            <div class="container-fluid pb-5 mb-2">
-
-                <router-outlet></router-outlet>
-
-            </div>
-
-        </div>
-        <!-- / Content -->
-        <!-- Footer -->
-        <app-footer></app-footer>
-    </div>
-
-    <!-- ==========Sem Usuario Logado ========= -->
-    <!-- Main Content -->
-    <div *ngIf="!user" class="content login">
-
-        <!-- Begin Page Content -->
-        <div class="container-fluid pb-5 mb-2">
-
-            <router-outlet></router-outlet>
-
-        </div>
-    </div>
-    <!-- / Content -->
+    <app-template></app-template>
 
 </div>

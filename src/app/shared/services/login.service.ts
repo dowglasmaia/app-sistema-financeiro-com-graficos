@@ -10,6 +10,7 @@ import { User } from 'src/app/pages/user/shared/user.model';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LocalUser } from '../util/localUser';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ export class LoginService {
 
   constructor(
     private http: HttpClient,
-    private storage: StorageService) { }
+    private storage: StorageService,
+    private route: Router) { }
 
   /* Retorna o Perfil do Usuario logado */
   public perfil(user: User): Observable<User> {
@@ -52,5 +54,7 @@ export class LoginService {
   public logout() {
     this.storage.setLocalUser(null);
     sessionStorage.clear();
+    this.route.navigate(['/login'])
+
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/shared/services/login.service';
+import { ResourceLoader } from '@angular/compiler';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private loginService: LoginService
+  ) { }
 
   ngOnInit() {
+
   }
 
+
+  logout() {
+    this.loginService.logout();
+    location.reload();
+
+  }
 }
