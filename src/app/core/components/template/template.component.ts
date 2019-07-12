@@ -11,7 +11,7 @@ import { StorageService } from '../../../shared/services/storage.service';
 export class TemplateComponent implements OnInit {
 
   user: User;
-  logado: boolean = false;
+  
 
   constructor(
     private userServices: UserService,
@@ -32,7 +32,7 @@ export class TemplateComponent implements OnInit {
       this.userServices.getUserByEmail(localUser.email).subscribe(
         user => {
           this.user = user;
-          this.logado = true;
+        
         }, error => { })
     }
   }

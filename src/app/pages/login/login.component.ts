@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   constructor(
-    private router: Router,
+    private route: Router,
     private auth: LoginService,
     private frmBuilder: FormBuilder,
   ) { }
@@ -48,11 +48,7 @@ export class LoginComponent implements OnInit {
   /* login */
   login() {
     this.auth.authenticate(this.creds).subscribe(response => {
-      this.auth.sucessfulllogin(response.headers.get('Authorization'));
-      location.reload();
-     
-    
-
+      this.auth.sucessfulllogin(response.headers.get('Authorization'));  
     },
       error => {
 
