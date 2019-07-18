@@ -22,6 +22,8 @@ export class TemplateComponent implements OnInit {
     
     this.getUserLogado();
 
+    console.log(sessionStorage.getItem('localUser'))
+
   }
 
   //find by user logged
@@ -32,7 +34,7 @@ export class TemplateComponent implements OnInit {
       this.userServices.getUserByEmail(localUser.email).subscribe(
         user => {
           this.user = user;
-        
+          console.log(this.user)
         }, error => { })
     }
   }

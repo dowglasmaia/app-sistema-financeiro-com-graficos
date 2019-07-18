@@ -12,6 +12,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { HeaderNavComponent } from './components/header-nav/header-nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TemplateComponent } from './components/template/template.component';
+import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { TemplateComponent } from './components/template/template.component';
     
   ],
   providers:[
+    AuthInterceptorProvider,
     TemplateComponent,
 
   ]
