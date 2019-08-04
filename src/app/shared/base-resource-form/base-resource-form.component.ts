@@ -8,6 +8,9 @@ import { BaseResourceService } from "../../shared/services/base-resource.service
 import { switchMap } from "rxjs/operators";
 
 import toasrt from "toastr"; /* Para Exibir as Mensagens  */
+import { UserService } from 'src/app/pages/user/shared/services/user.service';
+import { StorageService } from '../services/storage.service';
+import { User } from 'src/app/pages/user/shared/user.model';
 
 /*Class Generica para Components de Formulario*/
 
@@ -19,9 +22,13 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     serverErrorMessages: string[] = null; // Error do Servidor
     submittingForm: boolean = false;
 
+    user: User;
+
     protected route: ActivatedRoute;
     protected router: Router;
     protected formBuilder: FormBuilder;
+    protected userServices: UserService;
+    protected storageService: StorageService
 
     constructor(
         protected injector: Injector,
@@ -31,13 +38,17 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     ) {
         this.route = this.injector.get(ActivatedRoute);
         this.router = this.injector.get(Router);
-        this.formBuilder = this.injector.get(FormBuilder)
+        this.formBuilder = this.injector.get(FormBuilder);
+        this.userServices = this.injector.get(UserService);
+        this.storageService = this.injector.get(StorageService)
     }
 
     ngOnInit() {
         this.setCurrentAction();
         this.buildResourceForm();
         this.loadResource();
+
+        this.getUserLogado();
     }
 
     /* Carrega logo todos os componentes da pagina serem carregados*/
@@ -102,7 +113,9 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     /* Create */
     protected createResource() {
         const resource: T = this.jsonDataToResourceFn(this.resourceForm.value);
-        
+
+        resource.usuario = this.user;
+
         this.resourceService.create(resource).subscribe(
             resource => this.actionsForSuccess(resource),  //sucesso
             error => this.actionsForError(error)  // Error
@@ -113,6 +126,8 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     /* Update*/
     protected updateResource() {
         const resource: T = this.jsonDataToResourceFn(this.resourceForm.value);
+
+        resource.usuario = this.user;
 
         this.resourceService.update(resource).subscribe(
             resource => this.actionsForSuccess(resource),  //sucesso
@@ -129,7 +144,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
         //Redirect/reload component page
         this.router.navigateByUrl(baseComponentPath, { skipLocationChange: true }).then(
-            () => this.router.navigate([baseComponentPath, resource.id, "edit"])
+            () => this.router.navigate([baseComponentPath, resource.id, 'edit'])
         )
     }
 
@@ -147,5 +162,18 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
     /* Build Form Abstrated - Sera implementado na Class que Erda o base resource form*/
     protected abstract buildResourceForm(): void;
+
+
+    //find by user logged
+    public getUserLogado() {
+        let localUser = this.storageService.getLocalUser();
+
+        if (localUser && localUser.email) {
+            this.userServices.getUserByEmail(localUser.email).subscribe(
+                user => {
+                    this.user = user;
+                }, error => { })
+        }
+    }
 
 }

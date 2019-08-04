@@ -6,6 +6,7 @@ import { EntryService } from "../shared/entry.service";
 import { BaseResourceFormComponent } from "../../../shared/base-resource-form/base-resource-form.component";
 import { Category } from './../../categories/shared/category.model';
 import { CategoryService } from '../../categories/shared/category.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -52,8 +53,8 @@ export class entryFormComponent extends BaseResourceFormComponent<Entry> impleme
   }
 
     /* listas Empresas*/
-    public getCategoriesByName(event) {
-      this.entryService.getCategoryByName(event.query).subscribe(lista => {
+    public getCategoriesByName(event ) {
+      this.entryService.getCategoryByName(event.query, this.user.id).subscribe(lista => {
         this.categories = lista;
       }, error => {
   

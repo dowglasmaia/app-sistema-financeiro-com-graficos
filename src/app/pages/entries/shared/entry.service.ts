@@ -46,8 +46,8 @@ export class EntryService extends BaseResourceService<Entry>{
   }
 
   //FIND LISTA BY NAME
-  public getCategoryByName(name: string): Observable<Category[]> {
-    return this.http.get<Category[]>(`${environment.url_api}/categories/lista?name=${name}`);
+  public getCategoryByName(name: string, idUsuario: number): Observable<Category[]> {
+    return this.http.get<Category[]>(`${environment.url_api}/categories/lista?name=${name}&usuario=${idUsuario}`);
 
   }
 

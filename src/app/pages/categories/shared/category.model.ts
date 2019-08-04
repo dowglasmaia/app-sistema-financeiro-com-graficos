@@ -1,3 +1,4 @@
+import { User } from 'src/app/pages/user/shared/user.model';
 import { BaseResourceModel } from 'src/app/shared/models/base-resource.model';
 
 export class Category extends BaseResourceModel {
@@ -6,6 +7,7 @@ export class Category extends BaseResourceModel {
         public id?: number,
         public name?: string,
         public description?: string,
+       
     ) {
         super(); // sempre que se extent uma class teve declarar o super();
     }

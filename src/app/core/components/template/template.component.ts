@@ -22,7 +22,7 @@ export class TemplateComponent implements OnInit {
     
     this.getUserLogado();
 
-    console.log(sessionStorage.getItem('localUser'))
+    //console.log(sessionStorage.getItem('localUser'))
 
   }
 
@@ -33,8 +33,7 @@ export class TemplateComponent implements OnInit {
     if (localUser && localUser.email) {
       this.userServices.getUserByEmail(localUser.email).subscribe(
         user => {
-          this.user = user;
-          console.log(this.user)
+          this.user = user;        
         }, error => { })
     }
   }
