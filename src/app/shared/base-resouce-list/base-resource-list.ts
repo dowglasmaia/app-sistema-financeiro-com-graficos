@@ -1,24 +1,32 @@
-import { OnInit } from '@angular/core';
+import { OnInit, Injector } from '@angular/core';
 
 import { BaseResourceService } from '../services/base-resource.service';
 import { BaseResourceModel } from '../models/base-resource.model';
+import { StorageService } from '../services/storage.service';
+import { UserService } from 'src/app/pages/user/shared/services/user.service';
+import { User } from 'src/app/pages/user/shared/user.model';
 
 
 export abstract class BaseResourceListComponent<T extends BaseResourceModel> implements OnInit {
 
     resources: T[] = [];
 
+    user: User;
+    protected userServices: UserService;
+    protected storageService: StorageService;
+
     constructor(
-        protected resourceService: BaseResourceService<T>
-    ) { }
+        protected injector: Injector,
+        protected resourceService: BaseResourceService<T>,
+
+    ) {
+        this.userServices = this.injector.get(UserService);
+        this.storageService = this.injector.get(StorageService)
+    }
 
     ngOnInit() {
-        this.resourceService.getAll(1).subscribe(
-            resource => {
-                this.resources = resource.sort((a, b) => b.id - a.id);  //sort((a,b) => b.id - a.id)  Ordenação comprando A e B, colocando o ultimo adicionado na lista como prioridade.
-            }, error => {
-              alert('Erro ao carregar a lista');
-            })
+        this.getUserLogado();
+
     }
 
     /* delete */
@@ -33,5 +41,29 @@ export abstract class BaseResourceListComponent<T extends BaseResourceModel> imp
         }
     }
 
+
+
+    //find by user logged
+    public getUserLogado() {
+        let localUser = this.storageService.getLocalUser();
+
+        if (localUser && localUser.email) {
+            this.userServices.getUserByEmail(localUser.email).subscribe(
+                user => {
+                    this.user = user;
+                    this.getCategories();
+                }, error => { })
+        }
+    }
+
+    //get Categories
+    public getCategories() {
+        this.resourceService.getAll(this.user.id).subscribe(
+            resource => {
+                this.resources = resource.sort((a, b) => b.id - a.id);  //sort((a,b) => b.id - a.id)  Ordenação comprando A e B, colocando o ultimo adicionado na lista como prioridade.
+            }, error => {
+                alert('Erro ao carregar a lista');
+            })
+     }
 
 }

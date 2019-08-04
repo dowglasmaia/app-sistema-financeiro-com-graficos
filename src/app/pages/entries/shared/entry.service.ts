@@ -8,6 +8,7 @@ import { map, catchError } from 'rxjs/operators';
 import * as moment from 'moment';
 import { environment } from 'src/environments/environment';
 import { Category } from '../../categories/shared/category.model';
+import { User } from '../../user/shared/user.model';
 
 @Injectable({
   providedIn: 'root'

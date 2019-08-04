@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 
 import { BaseResourceListComponent } from './../../../shared/base-resouce-list/base-resource-list';
 
@@ -14,9 +14,11 @@ export class EntryListComponent extends BaseResourceListComponent<Entry> {
 
 
   constructor(
-    protected entryServices: EntryService
+    protected entryServices: EntryService,  
+    protected injector: Injector
   ) {
-    super(entryServices)
+    //super()
+    super(injector, entryServices)
   }
 
 

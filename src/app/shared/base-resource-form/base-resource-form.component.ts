@@ -28,7 +28,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     protected router: Router;
     protected formBuilder: FormBuilder;
     protected userServices: UserService;
-    protected storageService: StorageService
+    protected storageService: StorageService;
 
     constructor(
         protected injector: Injector,
