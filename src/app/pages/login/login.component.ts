@@ -6,6 +6,27 @@ import { Credencias } from '../user/shared/credencias.model';
 import { LoginService } from 'src/app/shared/services/login.service';
 import { Router } from '@angular/router';
 
+import toasrt from "toastr"; /* Para Exibir as Mensagens  */
+
+// personalizando o toasrt (Mensagens)
+toasrt.options = {
+  "closeButton": false,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": true,
+  "positionClass": "toast-top-center",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "3000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,6 +34,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  
   formGroup: FormGroup;
 
   usuario: User;
@@ -54,7 +76,7 @@ export class LoginComponent implements OnInit {
      // this.route.navigate(['reports'])
     },
       error => {
-
+        toasrt.error('Login Falhou!');
       });
   }
 

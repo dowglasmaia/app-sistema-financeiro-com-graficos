@@ -5,14 +5,14 @@
             <div class="card shadow border-0">
                 <div class="card-header">
                     <h3 class="text-center mt-5">Bem Vindo</h3>
-                
+
                 </div>
 
                 <h6 class="text-center mt-2">Entre com suas Credencias para logar</h6>
 
                 <div class="card-body px-lg-5 py-lg-5">
-
                     <form role="form" [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+
                         <div class="form-group mb-3">
                             <div class="input-group input-group-alternative">
                                 <div class="input-group-prepend">
@@ -37,14 +37,21 @@
                         </div>
 
                         <div class="text-center">
-                            <button class="btn btn-block btn-lg btn-primary text-center text-light" type="submit" [disabled]="!formGroup.valid"> 
+                            <button class="btn btn-block btn-lg btn-primary text-center text-light" type="submit"
+                                [disabled]="!formGroup.valid">
                                 Login
-                                <i class="fas fa-paper-plane ml-2"  aria-hidden="true"></i>
+                                <i class="fas fa-paper-plane ml-2" aria-hidden="true"></i>
                             </button>
                         </div>
 
                     </form>
                 </div>
+
+                <span class="text-center">p/teste entre com e-mail:<strong> maia_01@maia.com ou
+                        maia_02@maia.com</strong>
+                </span>
+                <span class="text-center">Senha : <strong> 123</strong></span>
+
             </div>
         </div>
     </div>
