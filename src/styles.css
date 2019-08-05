@@ -1,13 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Philosopher|Satisfy&display=swap');
 
-label, h2, h3, h4, h5, h6, p {
-       
+h3 {
+    font-family: 'Satisfy', cursive;
+    color      : rgba(27, 48, 44, 0.904);
 }
 
-li, h1 , button {
-  
+ h5 {
+    font-family: 'Satisfy', cursive;
 }
 
-.ui-autocomplete{
+h1,h2, h4,h6 {
+    font-family: 'Philosopher', sans-serif;
+}
+
+.ui-autocomplete {
     width: 100% !important;
+}
+
+button {
+    font-family: 'Philosopher', sans-serif;
 }

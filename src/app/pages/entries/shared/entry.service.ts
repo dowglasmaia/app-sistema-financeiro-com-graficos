@@ -9,24 +9,27 @@ import * as moment from 'moment';
 import { environment } from 'src/environments/environment';
 import { Category } from '../../categories/shared/category.model';
 import { User } from '../../user/shared/user.model';
+import { UserService } from '../../user/shared/services/user.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class EntryService extends BaseResourceService<Entry>{
 
+    
   constructor(
     protected injector: Injector,
-    protected categoryServices: CategoryService
+    protected categoryServices: CategoryService,
   ) {
-    super("entries", injector, Entry.fromJson);
+    super("entries", injector, Entry.fromJson)
+   
   }
 
-
-
   //mes e ano   ---- passando o id do usuario Logado
-  public getByMonthAndYear(month: number, year: number): Observable<Entry[]> {
-    return this.getAll(1).pipe(
+  public getByMonthAndYear(month: number, year: number , usuario: number): Observable<Entry[]> {  
+    return this.getAll(usuario).pipe(
       map(entries => this.filterByMonthAndYear(entries, month, year))
     )
   }
@@ -51,6 +54,7 @@ export class EntryService extends BaseResourceService<Entry>{
     return this.http.get<Category[]>(`${environment.url_api}/categories/lista?name=${name}&usuario=${idUsuario}`);
 
   }
+
 
 
 }

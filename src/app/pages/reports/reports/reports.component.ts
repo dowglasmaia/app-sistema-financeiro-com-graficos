@@ -1,3 +1,5 @@
+import { User } from 'src/app/pages/user/shared/user.model';
+
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 import { Category } from '../../categories/shared/category.model';
@@ -8,6 +10,8 @@ import { EntryService } from '../../entries/shared/entry.service';
 
 /* https://www.npmjs.com/package/currency-formatter */
 import currencyFormatter from 'currency-formatter';
+import { UserService } from '../../user/shared/services/user.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-reports',
@@ -21,6 +25,8 @@ export class ReportsComponent implements OnInit {
   revenueTotal: any = 0;
 
   balance: any = 0;
+
+  user: User;
 
   //grafico de Despesas
   expenseChartData: any;
@@ -47,13 +53,16 @@ export class ReportsComponent implements OnInit {
   @ViewChild('year') year: ElementRef = null;
 
   constructor(
-    private entryService: EntryService, 
-    private categoryService: CategoryService) { }
+    private entryService: EntryService,
+    private categoryService: CategoryService,
+    protected userServices: UserService,
+    protected storageService: StorageService
+  ) { }
 
   ngOnInit() {
-    //categorias ---- passando o ID do Usuario Logado
-    this.categoryService.getAll(1).subscribe(obj => this.categories = obj);
-     
+
+    this.getUserLogado();
+
 
   }
 
@@ -66,7 +75,7 @@ export class ReportsComponent implements OnInit {
     if (!month || !year)
       alert('Você precisa selecionar o Mês e o Ano para gerar o relatório!')
     else
-      this.entryService.getByMonthAndYear(month, year).subscribe(this.setValues.bind(this))
+      this.entryService.getByMonthAndYear(month, year,this.user.id).subscribe(this.setValues.bind(this))
   }
 
   private setValues(entries: Entry[]) {
@@ -99,7 +108,6 @@ export class ReportsComponent implements OnInit {
 
     //Saldo - receita  - despesas
     this.balance = currencyFormatter.format(revenueTotal - expenseTotal, { code: 'BRL' });
-
   }
 
   //valores do charts
@@ -140,5 +148,22 @@ export class ReportsComponent implements OnInit {
         data: chartData.map(item => item.totalAmount)
       }]
     }
+  }
+
+  //find by user logged
+  public getUserLogado() {
+    let localUser = this.storageService.getLocalUser();
+
+    if (localUser && localUser.email) {
+      this.userServices.getUserByEmail(localUser.email).subscribe(
+        user => {
+          this.user = user;
+console.log(this.user);
+          //categorias ---- passando o ID do Usuario Logado
+          this.categoryService.getAll(this.user.id).subscribe(obj => this.categories = obj);
+
+        }, error => { })
+    }
+
   }
 }

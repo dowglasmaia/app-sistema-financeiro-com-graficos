@@ -12,11 +12,6 @@ import { CategoryService } from '../shared/category.service';
 })
 export class CategoryListComponent extends BaseResourceListComponent<Category> {
   
-  /*
-    get categories(){
-      return this.resources;
-    }
-  */
 
   constructor(
     protected injector: Injector,
