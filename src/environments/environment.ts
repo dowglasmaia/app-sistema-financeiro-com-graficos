@@ -8,7 +8,7 @@ export const environment = {
   production: false,
 
     /* url do servidor*/
-    url_api: 'http://localhost:8080',
+    url_api: 'http://api-financy.us-east-2.elasticbeanstalk.com',
 
 
   /* headers - Definindo o Tipo de Conteudo que é Passo no corpo da requisição*/

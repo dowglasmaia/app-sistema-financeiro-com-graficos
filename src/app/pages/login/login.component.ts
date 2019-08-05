@@ -70,10 +70,9 @@ export class LoginComponent implements OnInit {
   /* login */
   login() {
     this.auth.authenticate(this.creds).subscribe(response => {
-      this.auth.sucessfulllogin(response.headers.get('Authorization'));
-      
-      location.replace('reports');
-     // this.route.navigate(['reports'])
+      this.auth.sucessfulllogin(response.headers.get('Authorization'));      
+      location.reload();
+     
     },
       error => {
         toasrt.error('Login Falhou!');

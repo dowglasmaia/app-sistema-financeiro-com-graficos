@@ -19,7 +19,7 @@ export class LoginGuard implements CanActivate {
   ): Observable<boolean> | boolean {
 
     if (this.storage.getLocalUser()) {
-      this.router.navigate(['reports'])
+      this.router.navigateByUrl('reports');
       return false;
     } else {
       return true;

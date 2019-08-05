@@ -61,7 +61,7 @@
     <!--/card-body-->
 
     <!--Card Relatorio-->
-    <div class="card-deck mt-4 mb-2">
+    <div class="card-deck mt-4 mb-4">
 
       <!-- card Receitas-->
       <div class="card text-center text-white bg-success">
@@ -104,19 +104,22 @@
       </div>
     </div>
     <!--/card-deck-->
+    <hr>
 
+    <!-- Graficos-->
+    <div class="row mt-3 ">
+      <div class="col-md-6">
+        <p-chart type="bar" [data]="revenueChartData" [options]="chartOptions"></p-chart>
+      </div>
+
+      <div class="col-md-6">
+        <p-chart type="bar" [data]="expenseChartData" [options]="chartOptions"></p-chart>
+      </div>
+    </div>
   </div> <!-- /Card-->
 
-  <hr>
 
-  <!-- Graficos-->
-  <div class="row mt-5">
-    <div class="col-md-6">
-      <p-chart type="bar" [data]="revenueChartData" [options]="chartOptions"></p-chart>
-    </div>
 
-    <div class="col-md-6">
-      <p-chart type="bar" [data]="expenseChartData" [options]="chartOptions"></p-chart>
-    </div>
-  </div>
+
+
 </div>
