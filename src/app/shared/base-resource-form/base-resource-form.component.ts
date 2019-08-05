@@ -14,6 +14,25 @@ import { User } from 'src/app/pages/user/shared/user.model';
 
 /*Class Generica para Components de Formulario*/
 
+// personalizando o toasrt (Mensagens)
+toasrt.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": true,
+    "positionClass": "toast-top-center",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "3000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  }
+
 export abstract class BaseResourceFormComponent<T extends BaseResourceModel> implements OnInit, AfterContentChecked {
 
     currentAction: string;
@@ -30,6 +49,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     protected userServices: UserService;
     protected storageService: StorageService;
 
+    
     constructor(
         protected injector: Injector,
         public resource: T, //para instancia o Obj que erda a class /// ex: new Category()
@@ -42,6 +62,8 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
         this.userServices = this.injector.get(UserService);
         this.storageService = this.injector.get(StorageService)
     }
+
+ 
 
     ngOnInit() {
         this.setCurrentAction();
@@ -138,7 +160,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     /* Success*/
     protected actionsForSuccess(resource: T): void {
         toasrt.success("Solicitação Processada com Sucesso!");
-
+      
         //Pegando o Path da Roda - Dinamicamente.
         const baseComponentPath: string = this.route.snapshot.parent.url[0].path;
 
