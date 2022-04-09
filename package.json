@@ -27,7 +27,7 @@
     "core-js": "^2.5.4",
     "currency-formatter": "^1.5.4",
     "jquery": "^3.4.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "ng2-currency-mask": "^5.3.1",
     "popper.js": "^1.15.0",
     "primeicons": "^1.0.0",
